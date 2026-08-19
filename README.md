@@ -67,7 +67,7 @@ Launchpad generates lightweight `.webloc` shortcut files inside the disposable `
 Launchpad writes native macOS color tags (`libc.setxattr`) directly to your project folders. When browsing Finder, runtime readiness and disk state are visible without opening a terminal.
 
 <div align="center">
-  <img src="assets/finder-tags.jpg" alt="Native macOS Finder Tags Readiness at a Glance" width="85%" style="border-radius: 12px;" />
+  <img src="assets/finder-readiness-tags.jpg" alt="Native macOS Finder Tags Readiness at a Glance" width="85%" style="border-radius: 12px;" />
 </div>
 
 ### 3. Spacebar Documentation Previews
