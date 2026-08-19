@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="life-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090e"/>
+      <stop offset="50%" stop-color="#0e111a"/>
+      <stop offset="100%" stop-color="#141724"/>
+    </linearGradient>
+
+    <!-- Tier Card Gradients -->
+    <linearGradient id="cold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(100, 116, 139, 0.18)"/>
+      <stop offset="100%" stop-color="rgba(100, 116, 139, 0.04)"/>
+    </linearGradient>
+    <linearGradient id="warm-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(234, 179, 8, 0.18)"/>
+      <stop offset="100%" stop-color="rgba(234, 179, 8, 0.04)"/>
+    </linearGradient>
+    <linearGradient id="hot-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 123, 0, 0.22)"/>
+      <stop offset="100%" stop-color="rgba(255, 123, 0, 0.04)"/>
+    </linearGradient>
+
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <style>
+      .txt-hdr { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; font-size: 18px; font-weight: 700; fill: #ffffff; }
+      .txt-tier { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; font-size: 20px; font-weight: 800; }
+      .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 12px; fill: #94a3b8; }
+      .txt-mono { font-family: "SF Mono", Menlo, monospace; font-size: 11px; fill: #cbd5e1; }
+    </style>
+  </defs>
+
+  <rect width="1100" height="560" fill="url(#life-bg)" rx="16"/>
+
+  <!-- Title -->
+  <g transform="translate(60, 40)">
+    <text x="0" y="20" class="txt-hdr" font-size="22" letter-spacing="-0.3">The 3-Tier Lifecycle Engine</text>
+    <text x="0" y="40" class="txt-sub" font-size="13">"Fat when working, lean when resting" • Zero storage bloat • Instant hydration</text>
+  </g>
+
+  <!-- 3 Tier Cards -->
+  <g transform="translate(60, 95)">
+    <!-- 1. COLD TIER -->
+    <g transform="translate(0, 0)" filter="url(#card-shadow)">
+      <rect width="300" height="320" rx="14" fill="url(#cold-grad)" stroke="#64748b" stroke-opacity="0.4" stroke-width="1.2"/>
+      <rect x="18" y="18" width="40" height="40" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+      <text x="28" y="44" font-size="18">☁️</text>
+
+      <text x="70" y="34" class="txt-tier" fill="#94a3b8">COLD</text>
+      <text x="70" y="52" class="txt-sub">Remote Cloud Anchor</text>
+
+      <line x1="18" y1="72" x2="282" y2="72" stroke="rgba(255,255,255,0.08)"/>
+
+      <g transform="translate(18, 90)">
+        <text x="0" y="16" class="txt-mono" fill="#e2e8f0">• Disk Footprint: <tspan font-weight="700" fill="#22c55e">0 KB on disk</tspan></text>
+        <text x="0" y="42" class="txt-mono" fill="#e2e8f0">• Physical Folder: <tspan fill="#94a3b8">Not cloned</tspan></text>
+        <text x="0" y="68" class="txt-mono" fill="#e2e8f0">• Surfaces: <tspan fill="#60a5fa">.webloc + Quick Look</tspan></text>
+        <text x="0" y="94" class="txt-mono" fill="#e2e8f0">• Search: <tspan fill="#ffffff">Spotlight ⌘Space</tspan></text>
+        
+        <rect y="125" width="264" height="48" rx="8" fill="#181b28" stroke="rgba(255,255,255,0.06)"/>
+        <text x="14" y="146" class="txt-mono" font-size="10" fill="#94a3b8">Hydrate on demand:</text>
+        <text x="14" y="162" class="txt-mono" font-size="11" font-weight="700" fill="#38bdf8">launchpad hydrate &lt;id&gt;</text>
+      </g>
+    </g>
+
+    <!-- Arrow 1: COLD -> WARM -->
+    <g transform="translate(306, 150)">
+      <path d="M 0 0 L 26 0" stroke="#eab308" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="26,-4 34,0 26,4" fill="#eab308"/>
+      <text x="-4" y="-10" class="txt-mono" font-size="10" fill="#eab308">Hydrate</text>
+      <text x="-2" y="20" class="txt-mono" font-size="10" fill="#94a3b8">Decay (120d)</text>
+    </g>
+
+    <!-- 2. WARM TIER -->
+    <g transform="translate(340, 0)" filter="url(#card-shadow)">
+      <rect width="300" height="320" rx="14" fill="url(#warm-grad)" stroke="#eab308" stroke-opacity="0.5" stroke-width="1.2"/>
+      <rect x="18" y="18" width="40" height="40" rx="10" fill="#1e293b" stroke="#eab308" stroke-width="1"/>
+      <text x="28" y="44" font-size="18">🟡</text>
+
+      <text x="70" y="34" class="txt-tier" fill="#facc15">WARM</text>
+      <text x="70" y="52" class="txt-sub">Lean Local Commit Tree</text>
+
+      <line x1="18" y1="72" x2="282" y2="72" stroke="rgba(255,255,255,0.08)"/>
+
+      <g transform="translate(18, 90)">
+        <text x="0" y="16" class="txt-mono" fill="#e2e8f0">• Disk Footprint: <tspan font-weight="700" fill="#facc15">~1 – 15 MB</tspan></text>
+        <text x="0" y="42" class="txt-mono" fill="#e2e8f0">• Physical Folder: <tspan fill="#e2e8f0">Pristine git clone</tspan></text>
+        <text x="0" y="68" class="txt-mono" fill="#e2e8f0">• Dependencies: <tspan fill="#94a3b8">None (no node_modules)</tspan></text>
+        <text x="0" y="94" class="txt-mono" fill="#e2e8f0">• Finder Tag: <tspan fill="#fde047">🟡 LP • WARM</tspan></text>
+
+        <rect y="125" width="264" height="48" rx="8" fill="#181b28" stroke="rgba(255,255,255,0.06)"/>
+        <text x="14" y="146" class="txt-mono" font-size="10" fill="#94a3b8">Promote to HOT:</text>
+        <text x="14" y="162" class="txt-mono" font-size="11" font-weight="700" fill="#ff7b00">launchpad hydrate &lt;id&gt; --hot</text>
+      </g>
+    </g>
+
+    <!-- Arrow 2: WARM -> HOT -->
+    <g transform="translate(646, 150)">
+      <path d="M 0 0 L 26 0" stroke="#ff7b00" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="26,-4 34,0 26,4" fill="#ff7b00"/>
+      <text x="-4" y="-10" class="txt-mono" font-size="10" fill="#ff7b00">Install</text>
+      <text x="-2" y="20" class="txt-mono" font-size="10" fill="#94a3b8">Decay (21d)</text>
+    </g>
+
+    <!-- 3. HOT TIER -->
+    <g transform="translate(680, 0)" filter="url(#card-shadow)">
+      <rect width="300" height="320" rx="14" fill="url(#hot-grad)" stroke="#ff7b00" stroke-opacity="0.6" stroke-width="1.2"/>
+      <rect x="18" y="18" width="40" height="40" rx="10" fill="#1e293b" stroke="#ff7b00" stroke-width="1"/>
+      <text x="28" y="44" font-size="18">🔥</text>
+
+      <text x="70" y="34" class="txt-tier" fill="#ff8c00">HOT</text>
+      <text x="70" y="52" class="txt-sub">Active Working Directory</text>
+
+      <line x1="18" y1="72" x2="282" y2="72" stroke="rgba(255,255,255,0.08)"/>
+
+      <g transform="translate(18, 90)">
+        <text x="0" y="16" class="txt-mono" fill="#e2e8f0">• Disk Footprint: <tspan font-weight="700" fill="#fdba74">Full (Installed)</tspan></text>
+        <text x="0" y="42" class="txt-mono" fill="#e2e8f0">• Dependencies: <tspan fill="#4ade80">Frozen lockfile active</tspan></text>
+        <text x="0" y="68" class="txt-mono" fill="#e2e8f0">• Dev Server: <tspan fill="#38bdf8">Collision-free PORT</tspan></text>
+        <text x="0" y="94" class="txt-mono" fill="#e2e8f0">• Finder Tag: <tspan fill="#fdba74">🟠 LP • HOT</tspan></text>
+
+        <rect y="125" width="264" height="48" rx="8" fill="#181b28" stroke="rgba(255,255,255,0.06)"/>
+        <text x="14" y="146" class="txt-mono" font-size="10" fill="#94a3b8">Execute with auto-port:</text>
+        <text x="14" y="162" class="txt-mono" font-size="11" font-weight="700" fill="#22c55e">launchpad run &lt;id&gt;</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Safety & Guardrail Banner -->
+  <g transform="translate(60, 440)">
+    <rect width="980" height="74" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    
+    <text x="24" y="28" class="txt-hdr" font-size="13" fill="#ffffff">🛡️ Guardrail 3 Cleanliness Audit &amp; Structural Safety</text>
+    <text x="24" y="50" class="txt-sub">
+      Eviction strictly verifies: <tspan fill="#38bdf8">git status</tspan> (uncommitted changes) • <tspan fill="#38bdf8">git stash</tspan> • <tspan fill="#38bdf8">git log</tspan> (unpushed branches). Non-TTY <tspan fill="#ef4444">--force</tspan> hard-fails.
+    </text>
+
+    <!-- Immunity Badges -->
+    <g transform="translate(810, 22)">
+      <rect width="145" height="30" rx="6" fill="#a855f7" fill-opacity="0.2" stroke="#a855f7" stroke-width="1"/>
+      <text x="16" y="19" class="txt-mono" font-size="11" font-weight="700" fill="#d8b4fe">📌 Pinned = Immune</text>
+    </g>
+  </g>
+</svg>

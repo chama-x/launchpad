@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Launchpad ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          files: |
+            engine/launchpad.py
+            install.sh
+            LICENSE
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

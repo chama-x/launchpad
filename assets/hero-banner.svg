@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0f"/>
+      <stop offset="50%" stop-color="#0f111a"/>
+      <stop offset="100%" stop-color="#151824"/>
+    </linearGradient>
+
+    <!-- Glassmorphic Gradients -->
+    <linearGradient id="glass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)"/>
+    </linearGradient>
+
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7b00" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <linearGradient id="spotlight-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255, 123, 0, 0.15)"/>
+      <stop offset="50%" stop-color="rgba(168, 85, 247, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(59, 130, 246, 0.15)"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="subtle-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.05); }
+      }
+      @keyframes typeText {
+        0%, 10% { width: 0; }
+        45%, 90% { width: 340px; }
+        100% { width: 0; }
+      }
+      @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      @keyframes floatCard {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+      .font-main { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .font-mono { font-family: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace; }
+      .cursor { animation: blinkCursor 0.9s infinite; }
+      .glow-bg-1 { animation: pulseGlow 10s ease-in-out infinite; }
+      .floating { animation: floatCard 6s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="150" r="180" fill="#ff7b00" opacity="0.12" filter="url(#glow)" class="glow-bg-1"/>
+  <circle cx="1000" cy="200" r="220" fill="#a855f7" opacity="0.14" filter="url(#glow)" class="glow-bg-1"/>
+  <circle cx="600" cy="500" r="260" fill="#3b82f6" opacity="0.1" filter="url(#glow)" class="glow-bg-1"/>
+
+  <!-- Background Subtle Grid -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+
+  <!-- Main Showcase Container (Card) -->
+  <g transform="translate(60, 40)">
+    <!-- Header Brand Section -->
+    <g transform="translate(0, 0)">
+      <!-- Logo Icon (Rocket in native macOS rounded rect) -->
+      <rect x="0" y="0" width="48" height="48" rx="12" fill="url(#spotlight-bar)" stroke="url(#border-grad)" stroke-width="1.5"/>
+      <path d="M24 10 C24 10, 31 16, 31 25 C31 31, 28 35, 24 38 C20 35, 17 31, 17 25 C17 16, 24 10, 24 10 Z" fill="none" stroke="#ff8c00" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 27 L12 30 L16 34 L19 32" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M31 27 L36 30 L32 34 L29 32" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="24" cy="22" r="2.5" fill="#38bdf8"/>
+      
+      <!-- Title & Tagline -->
+      <text x="62" y="28" fill="#ffffff" font-size="24" font-weight="700" class="font-main" letter-spacing="-0.5">LAUNCHPAD <tspan fill="#ff7b00" font-weight="800">v2</tspan></text>
+      <text x="62" y="44" fill="#94a3b8" font-size="13" font-weight="500" class="font-main">The macOS-Native Workspace Engine for Developers &amp; AI Agents</text>
+    </g>
+
+    <!-- Top Feature Metric Pills -->
+    <g transform="translate(580, 8)">
+      <g transform="translate(0, 0)">
+        <rect width="145" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <circle cx="15" cy="15" r="4" fill="#22c55e"/>
+        <text x="26" y="19" fill="#e2e8f0" font-size="11" font-weight="600" class="font-mono">0 Resident Daemons</text>
+      </g>
+      <g transform="translate(155, 0)">
+        <rect width="125" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <circle cx="15" cy="15" r="4" fill="#38bdf8"/>
+        <text x="26" y="19" fill="#e2e8f0" font-size="11" font-weight="600" class="font-mono">0 MB Idle RAM</text>
+      </g>
+      <g transform="translate(290, 0)">
+        <rect width="195" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <circle cx="15" cy="15" r="4" fill="#a855f7"/>
+        <text x="26" y="19" fill="#e2e8f0" font-size="11" font-weight="600" class="font-mono">Pure Python 3 Stdlib</text>
+      </g>
+    </g>
+
+    <!-- Main Window Mockup: Spotlight & Finder Layered -->
+    <g transform="translate(0, 70)" class="floating">
+      <!-- Spotlight Window Mockup (Glassmorphism) -->
+      <rect x="140" y="0" width="800" height="420" rx="20" fill="#131622" fill-opacity="0.94" stroke="url(#border-grad)" stroke-width="1.5" filter="url(#subtle-glow)"/>
+
+      <!-- Spotlight Top Search Bar -->
+      <rect x="160" y="20" width="760" height="60" rx="14" fill="#1c2033" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      
+      <!-- Spotlight Magnifying Glass Icon -->
+      <circle cx="192" cy="50" r="9" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+      <line x1="198.5" y1="56.5" x2="207" y2="65" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Search Query -->
+      <g transform="translate(222, 56)">
+        <text fill="#ffffff" font-size="20" font-weight="500" class="font-mono">
+          <tspan fill="#60a5fa">openworldeye</tspan> live
+        </text>
+        <rect x="242" y="-18" width="2.5" height="24" fill="#38bdf8" class="cursor"/>
+      </g>
+
+      <!-- Return Key Badge -->
+      <g transform="translate(850, 36)">
+        <rect width="54" height="28" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="14" y="19" fill="#94a3b8" font-size="12" font-weight="600" class="font-mono">⏎ ⇥</text>
+      </g>
+
+      <!-- Spotlight Results List -->
+      <g transform="translate(160, 95)">
+        <!-- Section Header -->
+        <text x="10" y="14" fill="#64748b" font-size="11" font-weight="700" class="font-mono" letter-spacing="1">SPOTLIGHT INDEXED SURFACES</text>
+
+        <!-- Result 1: Live Demo Webloc (Selected) -->
+        <g transform="translate(0, 24)">
+          <rect width="760" height="64" rx="10" fill="rgba(59, 130, 246, 0.18)" stroke="rgba(59, 130, 246, 0.4)" stroke-width="1.2"/>
+          <!-- Safari / Web Icon -->
+          <rect x="14" y="12" width="40" height="40" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+          <circle cx="34" cy="32" r="12" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+          <ellipse cx="34" cy="32" rx="6" ry="12" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+          <line x1="22" y1="32" x2="46" y2="32" stroke="#38bdf8" stroke-width="1.5"/>
+
+          <text x="68" y="28" fill="#ffffff" font-size="15" font-weight="600" class="font-main">openworldeye — Live.webloc</text>
+          <text x="68" y="46" fill="#94a3b8" font-size="12" class="font-mono">Launchpad/openworldeye • https://openworldeye.app • Double-Click to Open</text>
+          
+          <rect x="670" y="18" width="76" height="26" rx="6" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1"/>
+          <text x="684" y="35" fill="#4ade80" font-size="11" font-weight="700" class="font-mono">LP • HOT</text>
+        </g>
+
+        <!-- Result 2: GitHub Webloc -->
+        <g transform="translate(0, 96)">
+          <rect width="760" height="54" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <!-- GitHub Icon -->
+          <rect x="14" y="9" width="36" height="36" rx="8" fill="#1e293b" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <circle cx="32" cy="27" r="10" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+
+          <text x="64" y="24" fill="#e2e8f0" font-size="14" font-weight="600" class="font-main">openworldeye — GitHub.webloc</text>
+          <text x="64" y="40" fill="#64748b" font-size="11" class="font-mono">https://github.com/chama-x/openworldeye</text>
+
+          <rect x="680" y="14" width="66" height="24" rx="6" fill="rgba(255,255,255,0.05)"/>
+          <text x="692" y="30" fill="#94a3b8" font-size="10" font-weight="600" class="font-mono">GitHub</text>
+        </g>
+
+        <!-- Result 3: Rendered Quick Look HTML -->
+        <g transform="translate(0, 158)">
+          <rect width="760" height="54" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <!-- HTML Doc Icon -->
+          <rect x="14" y="9" width="36" height="36" rx="8" fill="#1e293b" stroke="#eab308" stroke-width="1"/>
+          <text x="24" y="32" fill="#eab308" font-size="12" font-weight="800" class="font-mono">&lt;&gt;</text>
+
+          <text x="64" y="24" fill="#e2e8f0" font-size="14" font-weight="600" class="font-main">README.html (Spacebar $\rightarrow$ Quick Look)</text>
+          <text x="64" y="40" fill="#64748b" font-size="11" class="font-mono">Self-contained styled preview • Dark/Light typography • Badges &amp; stats</text>
+
+          <rect x="665" y="14" width="81" height="24" rx="6" fill="#eab308" fill-opacity="0.15" stroke="#eab308" stroke-width="0.8"/>
+          <text x="677" y="30" fill="#facc15" font-size="10" font-weight="600" class="font-mono">Quick Look</text>
+        </g>
+
+        <!-- Result 4: Finder Quick Actions (Hydrate / Run) -->
+        <g transform="translate(0, 220)">
+          <rect width="760" height="54" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <!-- Finder Gear Icon -->
+          <rect x="14" y="9" width="36" height="36" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+          <circle cx="32" cy="27" r="8" fill="none" stroke="#c084fc" stroke-width="1.8"/>
+
+          <text x="64" y="24" fill="#e2e8f0" font-size="14" font-weight="600" class="font-main">Right-Click in Finder $\rightarrow$ Launchpad — Run</text>
+          <text x="64" y="40" fill="#64748b" font-size="11" class="font-mono">Auto port-collision avoidance (PORT=3001) • Frozen lockfile installs</text>
+
+          <rect x="670" y="14" width="76" height="24" rx="6" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="0.8"/>
+          <text x="682" y="30" fill="#d8b4fe" font-size="10" font-weight="600" class="font-mono">Automator</text>
+        </g>
+      </g>
+
+      <!-- Bottom Status Bar in Spotlight Window -->
+      <g transform="translate(160, 380)">
+        <text x="0" y="16" fill="#64748b" font-size="11" class="font-mono">Finder Tag: <tspan fill="#ff7b00">🟠 HOT</tspan>  |  Decay: <tspan fill="#94a3b8">21d Idle</tspan>  |  Toolchain: <tspan fill="#38bdf8">pnpm</tspan>  |  Lockfile: <tspan fill="#22c55e">Frozen</tspan></text>
+        <text x="590" y="16" fill="#64748b" font-size="11" class="font-mono">Press ⌘Space anytime</text>
+      </g>
+    </g>
+  </g>
+</svg>

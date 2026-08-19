@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary sandbox test files
+launchpad_test_*
+.launchpad/
+Launchpad/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Local environment
+.env
+.env.local
+.venv/

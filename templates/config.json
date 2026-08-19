@@ -1,0 +1,13 @@
+{
+  "scanIntervalHours": 24,
+  "defaultPort": 3000,
+  "portRangeStart": 3000,
+  "portRangeEnd": 3050,
+  "minFreeDiskGB": 5,
+  "editor": "open",
+  "ignoreScripts": false,
+  "decay": {
+    "hotToWarmDays": 21,
+    "warmToColdDays": 120
+  }
+}
