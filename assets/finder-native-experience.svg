@@ -1,33 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
   <defs>
     <linearGradient id="finder-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080a0f"/>
-      <stop offset="100%" stop-color="#121520"/>
+      <stop offset="0%" stop-color="#07080c"/>
+      <stop offset="50%" stop-color="#0b0e15"/>
+      <stop offset="100%" stop-color="#10131d"/>
     </linearGradient>
 
     <linearGradient id="window-body" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1e2230"/>
-      <stop offset="100%" stop-color="#161824"/>
+      <stop offset="0%" stop-color="#1c1f2b"/>
+      <stop offset="100%" stop-color="#141620"/>
     </linearGradient>
 
     <linearGradient id="sidebar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="rgba(18, 20, 30, 0.95)"/>
-      <stop offset="100%" stop-color="rgba(14, 16, 24, 0.95)"/>
+      <stop offset="0%" stop-color="rgba(16, 18, 26, 0.96)"/>
+      <stop offset="100%" stop-color="rgba(12, 14, 20, 0.96)"/>
     </linearGradient>
 
     <linearGradient id="menu-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#24283b"/>
-      <stop offset="100%" stop-color="#1a1c2b"/>
+      <stop offset="0%" stop-color="#242838"/>
+      <stop offset="100%" stop-color="#1a1c28"/>
     </linearGradient>
 
     <filter id="window-shadow" x="-10%" y="-10%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.8"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+      <feDropShadow dx="0" dy="24" stdDeviation="32" flood-color="#000000" flood-opacity="0.80"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.40"/>
     </filter>
 
     <filter id="menu-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.85"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.85"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.50"/>
     </filter>
 
     <style>
@@ -35,31 +36,27 @@
       .sf-body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 12px; fill: #e2e8f0; }
       .sf-meta { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 11px; fill: #94a3b8; }
       .sf-sidebar { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 12px; font-weight: 500; fill: #cbd5e1; }
-      .sf-mono { font-family: "SF Mono", Menlo, monospace; font-size: 11px; fill: #94a3b8; }
+      .sf-mono { font-family: "SF Mono", Menlo, Monaco, monospace; font-size: 11px; }
     </style>
   </defs>
 
   <!-- Background Base -->
   <rect width="1200" height="680" fill="url(#finder-bg)"/>
 
-  <!-- Subtle Highlights -->
-  <circle cx="250" cy="200" r="300" fill="#3b82f6" opacity="0.08"/>
-  <circle cx="950" cy="450" r="320" fill="#ff7b00" opacity="0.08"/>
-
   <!-- Title / Header -->
   <g transform="translate(60, 40)">
-    <text x="0" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display'" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3">Native macOS Finder Integration</text>
-    <text x="0" y="42" class="sf-meta" font-size="13">Finder Tag Dots • Quick Action Context Menus • Zero Custom App Windows</text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display'" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3">Native macOS Finder Integration</text>
+    <text x="0" y="44" class="sf-meta" font-size="13">Native Tag Dots • Quick Actions • Spacebar Quick Look • Zero Custom Windows</text>
   </g>
 
   <!-- Main Finder Window -->
   <g transform="translate(60, 95)">
     <!-- Window Frame -->
-    <rect width="1080" height="520" rx="14" fill="url(#window-body)" stroke="rgba(255,255,255,0.15)" stroke-width="1" filter="url(#window-shadow)"/>
+    <rect width="1080" height="520" rx="14" fill="url(#window-body)" stroke="rgba(255,255,255,0.14)" stroke-width="1" filter="url(#window-shadow)"/>
 
     <!-- Window Titlebar -->
     <g transform="translate(0, 0)">
-      <path d="M0 14 Q0 0 14 0 L1066 0 Q1080 0 1080 14 L1080 44 L0 44 Z" fill="#1b1e2a"/>
+      <path d="M0 14 Q0 0 14 0 L1066 0 Q1080 0 1080 14 L1080 44 L0 44 Z" fill="#181b26"/>
       <line x1="0" y1="44" x2="1080" y2="44" stroke="rgba(255,255,255,0.08)"/>
 
       <!-- Traffic Lights -->
@@ -69,8 +66,8 @@
         <circle cx="46" cy="6" r="6" fill="#27c93f" stroke="#1aab29" stroke-width="0.5"/>
       </g>
 
-      <!-- Window Title & Breadcrumbs -->
-      <text x="540" y="27" text-anchor="middle" class="sf-title" font-size="13">Projects — ~/Projects</text>
+      <!-- Window Title -->
+      <text x="540" y="27" text-anchor="middle" class="sf-title">Projects — ~/Projects</text>
     </g>
 
     <!-- Sidebar Section -->
@@ -91,7 +88,7 @@
           <text x="6" y="16">🖥️</text>
         </g>
         <g transform="translate(0, 82)">
-          <rect x="-6" y="0" width="194" height="28" rx="6" fill="#2563eb" fill-opacity="0.3"/>
+          <rect x="-6" y="0" width="194" height="28" rx="6" fill="#2563eb" fill-opacity="0.35"/>
           <text x="26" y="18" class="sf-sidebar" font-weight="600" fill="#ffffff">Projects</text>
           <text x="6" y="18">📁</text>
         </g>
@@ -100,189 +97,131 @@
           <text x="6" y="16">⚡</text>
         </g>
 
-        <!-- Tags in Sidebar -->
-        <g transform="translate(0, 160)">
-          <text x="8" y="10" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#64748b" letter-spacing="0.6">TAGS</text>
-          <g transform="translate(0, 24)">
+        <!-- TAGS Section in Sidebar -->
+        <g transform="translate(0, 170)">
+          <text x="8" y="10" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#64748b" letter-spacing="0.6">READINESS TAGS</text>
+          <g transform="translate(0, 22)">
             <circle cx="10" cy="12" r="5" fill="#ff7b00"/>
-            <text x="26" y="16" class="sf-sidebar">LP • HOT</text>
+            <text x="26" y="16" class="sf-sidebar">LP · HOT</text>
           </g>
-          <g transform="translate(0, 54)">
+          <g transform="translate(0, 48)">
             <circle cx="10" cy="12" r="5" fill="#eab308"/>
-            <text x="26" y="16" class="sf-sidebar">LP • WARM</text>
+            <text x="26" y="16" class="sf-sidebar">LP · WARM</text>
           </g>
-          <g transform="translate(0, 84)">
-            <circle cx="10" cy="12" r="5" fill="#64748b"/>
-            <text x="26" y="16" class="sf-sidebar">LP • COLD</text>
+          <g transform="translate(0, 74)">
+            <circle cx="10" cy="12" r="5" fill="#94a3b8"/>
+            <text x="26" y="16" class="sf-sidebar">LP · COLD</text>
+          </g>
+          <g transform="translate(0, 100)">
+            <circle cx="10" cy="12" r="5" fill="#a855f7"/>
+            <text x="26" y="16" class="sf-sidebar">LP · Pinned</text>
           </g>
         </g>
       </g>
     </g>
 
-    <!-- Main File List Area -->
+    <!-- Main List View Section -->
     <g transform="translate(210, 44)">
       <!-- List Column Header -->
-      <g transform="translate(0, 0)">
-        <rect width="870" height="26" fill="#141722"/>
-        <line x1="0" y1="26" x2="870" y2="26" stroke="rgba(255,255,255,0.06)"/>
+      <rect width="870" height="28" fill="rgba(255,255,255,0.02)"/>
+      <line x1="0" y1="28" x2="870" y2="28" stroke="rgba(255,255,255,0.06)"/>
 
-        <text x="20" y="17" class="sf-meta" font-weight="600">Name</text>
-        <text x="290" y="17" class="sf-meta" font-weight="600">Readiness Tag</text>
-        <text x="460" y="17" class="sf-meta" font-weight="600">Size</text>
-        <text x="560" y="17" class="sf-meta" font-weight="600">Kind</text>
-        <text x="680" y="17" class="sf-meta" font-weight="600">Toolchain</text>
+      <text x="36" y="18" class="sf-meta" font-weight="600">Name</text>
+      <text x="260" y="18" class="sf-meta" font-weight="600">Tag / Status</text>
+      <text x="420" y="18" class="sf-meta" font-weight="600">Disk Size</text>
+      <text x="560" y="18" class="sf-meta" font-weight="600">Kind</text>
+      <text x="720" y="18" class="sf-meta" font-weight="600">Last Active</text>
+
+      <!-- Row 1: Selected HOT Project -->
+      <g transform="translate(0, 28)">
+        <rect width="870" height="38" fill="#2563eb" fill-opacity="0.25"/>
+        <text x="14" y="24" font-size="14">📁</text>
+        <text x="36" y="24" class="sf-body" font-weight="600" fill="#ffffff">openworldeye</text>
+        
+        <circle cx="266" cy="20" r="5" fill="#ff7b00"/>
+        <text x="280" y="24" class="sf-mono" fill="#ff7b00">LP · HOT</text>
+        
+        <text x="420" y="24" class="sf-mono" fill="#ffffff">842.1 MB</text>
+        <text x="560" y="24" class="sf-body" fill="#cbd5e1">Next.js App</text>
+        <text x="720" y="24" class="sf-meta">Today, 2:14 PM</text>
       </g>
 
-      <!-- Row 1: blackrock-ops (Selected / Right-Clicked) -->
-      <g transform="translate(0, 26)">
-        <rect width="870" height="34" fill="#2563eb" fill-opacity="0.3"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#ff7b00"/>
-        <text x="38" y="22" class="sf-body" font-weight="600" fill="#ffffff">blackrock-ops</text>
-
-        <!-- Tag Dot & Label -->
-        <circle cx="298" cy="17" r="4.5" fill="#ff7b00"/>
-        <text x="312" y="21" class="sf-meta" fill="#fdba74" font-weight="600">LP • HOT</text>
-
-        <text x="460" y="21" class="sf-meta">1.13 GB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">node via pnpm</text>
+      <!-- Row 2: WARM Project -->
+      <g transform="translate(0, 66)">
+        <text x="14" y="24" font-size="14">📁</text>
+        <text x="36" y="24" class="sf-body" fill="#e2e8f0">neural-canvas</text>
+        
+        <circle cx="266" cy="20" r="5" fill="#eab308"/>
+        <text x="280" y="24" class="sf-mono" fill="#eab308">LP · WARM</text>
+        
+        <text x="420" y="24" class="sf-mono" fill="#cbd5e1">8.4 MB</text>
+        <text x="560" y="24" class="sf-body" fill="#94a3b8">Python / PyTorch</text>
+        <text x="720" y="24" class="sf-meta">14 days ago</text>
       </g>
 
-      <!-- Row 2: camsnap -->
-      <g transform="translate(0, 60)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#ff7b00"/>
-        <text x="38" y="22" class="sf-body">camsnap</text>
-
-        <circle cx="298" cy="17" r="4.5" fill="#ff7b00"/>
-        <text x="312" y="21" class="sf-meta" fill="#fdba74">LP • HOT</text>
-        <text x="460" y="21" class="sf-meta">1.24 GB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">node via pnpm</text>
+      <!-- Row 3: COLD Project -->
+      <g transform="translate(0, 104)">
+        <text x="14" y="24" font-size="14" opacity="0.6">☁️</text>
+        <text x="36" y="24" class="sf-body" fill="#94a3b8">crypto-ledger</text>
+        
+        <circle cx="266" cy="20" r="5" fill="#64748b"/>
+        <text x="280" y="24" class="sf-mono" fill="#64748b">LP · COLD</text>
+        
+        <text x="420" y="24" class="sf-mono" fill="#22c55e">0 KB on disk</text>
+        <text x="560" y="24" class="sf-body" fill="#64748b">Go Service</text>
+        <text x="720" y="24" class="sf-meta">64 days ago</text>
       </g>
 
-      <!-- Row 3: spatial-agents -->
-      <g transform="translate(0, 94)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#eab308"/>
-        <text x="38" y="22" class="sf-body">spatial-agents</text>
-
-        <circle cx="298" cy="17" r="4.5" fill="#eab308"/>
-        <text x="312" y="21" class="sf-meta" fill="#fde047">LP • WARM</text>
-        <text x="460" y="21" class="sf-meta">222 MB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">node via pnpm</text>
-      </g>
-
-      <!-- Row 4: rig-calc (Pinned) -->
-      <g transform="translate(0, 128)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#eab308"/>
-        <text x="38" y="22" class="sf-body">rig-calc</text>
-
-        <circle cx="298" cy="17" r="4.5" fill="#eab308"/>
-        <circle cx="310" cy="17" r="4.5" fill="#a855f7"/>
-        <text x="322" y="21" class="sf-meta" fill="#fde047">LP • WARM 📌</text>
-        <text x="460" y="21" class="sf-meta">70.4 MB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">python (generic)</text>
-      </g>
-
-      <!-- Row 5: portfolio -->
-      <g transform="translate(0, 162)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#ff7b00"/>
-        <text x="38" y="22" class="sf-body">portfolio</text>
-
-        <circle cx="298" cy="17" r="4.5" fill="#ff7b00"/>
-        <text x="312" y="21" class="sf-meta" fill="#fdba74">LP • HOT</text>
-        <text x="460" y="21" class="sf-meta">408 MB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">node via pnpm</text>
-      </g>
-
-      <!-- Row 6: open-typst -->
-      <g transform="translate(0, 196)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <circle cx="14" cy="18" r="3.5" fill="#eab308"/>
-        <text x="38" y="22" class="sf-body">open-typst</text>
-
-        <circle cx="298" cy="17" r="4.5" fill="#eab308"/>
-        <text x="312" y="21" class="sf-meta" fill="#fde047">LP • WARM</text>
-        <text x="460" y="21" class="sf-meta">216 MB</text>
-        <text x="560" y="21" class="sf-meta">Folder</text>
-        <text x="680" y="21" class="sf-mono" fill="#38bdf8">node via pnpm</text>
-      </g>
-
-      <!-- Row 7: Launchpad Index Slot -->
-      <g transform="translate(0, 230)">
-        <rect width="870" height="34" fill="transparent"/>
-        <text x="18" y="22" font-size="14">📁</text>
-        <text x="38" y="22" class="sf-body" fill="#94a3b8">Launchpad</text>
-
-        <text x="312" y="21" class="sf-meta" fill="#64748b">—</text>
-        <text x="460" y="21" class="sf-meta">553 KB</text>
-        <text x="560" y="21" class="sf-meta">Index (120 slots)</text>
-        <text x="680" y="21" class="sf-mono" fill="#64748b">generated</text>
+      <!-- Row 4: Pinned Project -->
+      <g transform="translate(0, 142)">
+        <text x="14" y="24" font-size="14">📌</text>
+        <text x="36" y="24" class="sf-body" fill="#e2e8f0">mission-control</text>
+        
+        <circle cx="266" cy="20" r="5" fill="#a855f7"/>
+        <text x="280" y="24" class="sf-mono" fill="#c084fc">LP · Pinned</text>
+        
+        <text x="420" y="24" class="sf-mono" fill="#cbd5e1">1.2 GB</text>
+        <text x="560" y="24" class="sf-body" fill="#94a3b8">Rust Monorepo</text>
+        <text x="720" y="24" class="sf-meta">Decay Exempt</text>
       </g>
     </g>
 
-    <!-- macOS Quick Action Context Menu Callout (Floating on blackrock-ops) -->
-    <g transform="translate(360, 95)" filter="url(#menu-shadow)">
-      <rect width="250" height="236" rx="10" fill="url(#menu-grad)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    <!-- Context Menu Overlay (Simulating Right-Click) -->
+    <g transform="translate(420, 150)" filter="url(#menu-shadow)">
+      <rect width="250" height="230" rx="10" fill="url(#menu-grad)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
 
-      <!-- Menu Items -->
-      <g transform="translate(10, 10)">
-        <!-- Header -->
-        <text x="12" y="16" class="sf-meta" font-size="10" font-weight="700" fill="#64748b">QUICK ACTIONS</text>
+      <g transform="translate(10, 14)">
+        <text x="12" y="16" class="sf-body">Open in Editor</text>
+        <text x="200" y="16" class="sf-meta">⌘O</text>
 
-        <g transform="translate(0, 22)">
-          <rect width="230" height="28" rx="6" fill="rgba(255,255,255,0.06)"/>
-          <text x="12" y="19" class="sf-body" font-size="12">Launchpad — Open in Editor</text>
-          <text x="200" y="19" class="sf-meta">⌥O</text>
+        <text x="12" y="44" class="sf-body">Quick Look "README.html"</text>
+        <text x="200" y="44" class="sf-meta">Space</text>
+
+        <line x1="6" y1="62" x2="224" y2="62" stroke="rgba(255,255,255,0.10)"/>
+
+        <!-- Quick Actions Submenu Item -->
+        <g transform="translate(0, 72)">
+          <rect x="0" y="0" width="230" height="28" rx="6" fill="#2563eb"/>
+          <text x="12" y="18" class="sf-body" font-weight="600" fill="#ffffff">Quick Actions</text>
+          <text x="205" y="18" class="sf-body" fill="#ffffff">▶</text>
         </g>
-        <g transform="translate(0, 52)">
-          <rect width="230" height="28" rx="6" fill="rgba(255,255,255,0.02)"/>
-          <text x="12" y="19" class="sf-body" font-size="12">Launchpad — Open Live</text>
-          <text x="200" y="19" class="sf-meta">⌥L</text>
+
+        <!-- Flyout Quick Actions Menu -->
+        <g transform="translate(236, 68)" filter="url(#menu-shadow)">
+          <rect width="200" height="110" rx="8" fill="url(#menu-grad)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <g transform="translate(12, 14)">
+            <text x="6" y="16" class="sf-body">⚡ Hydrate (Install)</text>
+            <text x="6" y="44" class="sf-body">🚀 Run Server (Port)</text>
+            <line x1="0" y1="58" x2="176" y2="58" stroke="rgba(255,255,255,0.1)"/>
+            <text x="6" y="78" class="sf-body" fill="#f87171">🧹 Evict Dependencies</text>
+          </g>
         </g>
-        <g transform="translate(0, 82)">
-          <rect width="230" height="28" rx="6" fill="rgba(255,255,255,0.02)"/>
-          <text x="12" y="19" class="sf-body" font-size="12">Launchpad — Open GitHub</text>
-          <text x="200" y="19" class="sf-meta">⌥G</text>
-        </g>
-        <g transform="translate(0, 112)">
-          <rect width="230" height="28" rx="6" fill="#2563eb"/>
-          <text x="12" y="19" class="sf-body" font-size="12" font-weight="600" fill="#ffffff">Launchpad — Run</text>
-          <text x="200" y="19" class="sf-meta" fill="#dbeafe">⌥R</text>
-        </g>
-        <g transform="translate(0, 142)">
-          <rect width="230" height="28" rx="6" fill="rgba(255,255,255,0.02)"/>
-          <text x="12" y="19" class="sf-body" font-size="12">Launchpad — Hydrate</text>
-          <text x="200" y="19" class="sf-meta">⌥H</text>
-        </g>
-        <g transform="translate(0, 172)">
-          <rect width="230" height="28" rx="6" fill="rgba(239,68,68,0.1)"/>
-          <text x="12" y="19" class="sf-body" font-size="12" fill="#f87171">Launchpad — Evict</text>
-          <text x="200" y="19" class="sf-meta" fill="#fca5a5">⌥E</text>
+
+        <g transform="translate(0, 110)">
+          <text x="12" y="16" class="sf-body">Set Live URL...</text>
+          <text x="12" y="44" class="sf-body">Copy Project JSON Card</text>
         </g>
       </g>
-    </g>
-
-    <!-- Bottom Finder Status Bar -->
-    <g transform="translate(0, 492)">
-      <rect width="1080" height="28" rx="0" fill="#141722"/>
-      <path d="M0 0 L1080 0 L1080 14 Q1080 28 1066 28 L14 28 Q0 28 0 14 Z" fill="#141722"/>
-      <line x1="0" y1="0" x2="1080" y2="0" stroke="rgba(255,255,255,0.08)"/>
-
-      <text x="20" y="18" class="sf-meta">33 items • 17.52 GB available</text>
-      <text x="960" y="18" class="sf-meta">List View (⌘2)</text>
     </g>
   </g>
 </svg>

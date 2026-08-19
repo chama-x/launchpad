@@ -1,243 +1,161 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="100%" height="100%">
   <defs>
-    <!-- Cupertino Dark Vibrancy Gradients -->
-    <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#08090d"/>
-      <stop offset="35%" stop-color="#0f1118"/>
-      <stop offset="70%" stop-color="#141722"/>
-      <stop offset="100%" stop-color="#0b0c12"/>
+    <!-- Background Canvas Gradient -->
+    <linearGradient id="canvas-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07080b"/>
+      <stop offset="50%" stop-color="#0c0e14"/>
+      <stop offset="100%" stop-color="#10121a"/>
     </linearGradient>
 
-    <!-- macOS Aurora Ambient Glows -->
-    <radialGradient id="aurora-orange" cx="20%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="#ff7b00" stop-opacity="0.18"/>
-      <stop offset="60%" stop-color="#ff7b00" stop-opacity="0.03"/>
+    <!-- Subtle Ambient Glows -->
+    <radialGradient id="ambient-blue" cx="20%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ambient-orange" cx="80%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#ff7b00" stop-opacity="0.10"/>
       <stop offset="100%" stop-color="#ff7b00" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="aurora-purple" cx="80%" cy="30%" r="50%">
-      <stop offset="0%" stop-color="#9333ea" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="aurora-cyan" cx="50%" cy="85%" r="55%">
-      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
-    </radialGradient>
 
-    <!-- macOS Sequoia Frosted Glass Shaders -->
-    <linearGradient id="glass-face" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(30, 33, 46, 0.92)"/>
-      <stop offset="100%" stop-color="rgba(18, 20, 30, 0.96)"/>
+    <!-- Sequoia Frosted Glass Shaders -->
+    <linearGradient id="spotlight-glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(30, 33, 44, 0.94)"/>
+      <stop offset="100%" stop-color="rgba(18, 20, 28, 0.98)"/>
     </linearGradient>
 
-    <linearGradient id="glass-specular" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.22)"/>
-      <stop offset="30%" stop-color="rgba(255, 255, 255, 0.08)"/>
-      <stop offset="70%" stop-color="rgba(255, 255, 255, 0.03)"/>
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.12)"/>
+    <linearGradient id="search-input-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.06)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)"/>
     </linearGradient>
 
-    <linearGradient id="searchbar-fill" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.07)"/>
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.03)"/>
+    <linearGradient id="selected-row" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
     </linearGradient>
 
-    <!-- Selection Gradient -->
-    <linearGradient id="selection-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <!-- macOS Deep Shadow Filters -->
-    <filter id="macos-shadow" x="-15%" y="-15%" width="130%" height="135%">
-      <feDropShadow dx="0" dy="24" stdDeviation="36" flood-color="#000000" flood-opacity="0.75"/>
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    <!-- macOS Window Drop Shadow -->
+    <filter id="spotlight-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="36" flood-color="#000000" flood-opacity="0.80"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.40"/>
     </filter>
 
-    <filter id="pill-shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    <filter id="badge-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.30"/>
     </filter>
 
     <style>
-      @keyframes floatWindow {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
-      }
-      @keyframes blinkCursor {
+      .sf-display { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", sans-serif; }
+      .sf-text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", sans-serif; }
+      .sf-mono { font-family: "SF Mono", Menlo, Monaco, Consolas, monospace; }
+      
+      @keyframes blink {
         0%, 100% { opacity: 1; }
         50% { opacity: 0; }
       }
-      @keyframes pulseHot {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.15); opacity: 0.85; }
-      }
-      .font-sf { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
-      .font-mono { font-family: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace; }
-      .window-float { animation: floatWindow 8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .cursor-blink { animation: blinkCursor 1s infinite; }
-      .hot-pulse { transform-origin: center; animation: pulseHot 3s ease-in-out infinite; }
+      .cursor { animation: blink 1s infinite; }
     </style>
   </defs>
 
-  <!-- Background Base Canvas -->
-  <rect width="1280" height="720" fill="url(#bg-canvas)"/>
+  <!-- Background Base -->
+  <rect width="1280" height="640" fill="url(#canvas-bg)"/>
+  <rect width="1280" height="640" fill="url(#ambient-blue)"/>
+  <rect width="1280" height="640" fill="url(#ambient-orange)"/>
 
-  <!-- Aurora Lights -->
-  <rect width="1280" height="720" fill="url(#aurora-orange)"/>
-  <rect width="1280" height="720" fill="url(#aurora-purple)"/>
-  <rect width="1280" height="720" fill="url(#aurora-cyan)"/>
-
-  <!-- Subtle macOS Mesh Grid -->
-  <g opacity="0.03" stroke="#ffffff" stroke-width="0.75">
-    <pattern id="mesh" width="32" height="32" patternUnits="userSpaceOnUse">
-      <path d="M 32 0 L 0 0 0 32"/>
+  <!-- Subtle Blueprint Mesh -->
+  <g opacity="0.025" stroke="#ffffff" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40"/>
     </pattern>
-    <rect width="1280" height="720" fill="url(#mesh)"/>
+    <rect width="1280" height="640" fill="url(#grid)"/>
   </g>
 
-  <!-- Top Brand Navigation / Eyebrow -->
-  <g transform="translate(80, 48)">
-    <!-- App Icon Emblem -->
-    <g transform="translate(0, 0)">
-      <rect width="44" height="44" rx="11" fill="url(#glass-face)" stroke="url(#glass-specular)" stroke-width="1.2" filter="url(#pill-shadow)"/>
-      <path d="M22 9 C22 9, 29 15, 29 23 C29 28.5, 26 32, 22 35 C18 32, 15 28.5, 15 23 C15 15, 22 9, 22 9 Z" fill="none" stroke="#ff7b00" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M15 25 L10.5 28 L14 31.5 L17 29.5" fill="none" stroke="#c084fc" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M29 25 L33.5 28 L30 31.5 L27 29.5" fill="none" stroke="#c084fc" stroke-width="1.6" stroke-linecap="round"/>
-      <circle cx="22" cy="20" r="2.5" fill="#38bdf8"/>
-    </g>
+  <!-- Header Branding (Minimal & Dignified) -->
+  <g transform="translate(80, 52)">
+    <rect width="32" height="32" rx="8" fill="#1e293b" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <text x="9" y="22" font-size="16">🚀</text>
+    <text x="44" y="22" class="sf-display" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="-0.4">Launchpad</text>
+    <text x="145" y="22" class="sf-mono" font-size="13" fill="#64748b">v2.0 · macOS Native</text>
 
-    <!-- Title & Apple-Style Tagline -->
-    <text x="58" y="22" class="font-sf" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="-0.3">Launchpad <tspan fill="#ff7b00">v2</tspan></text>
-    <text x="58" y="38" class="font-sf" font-size="12" font-weight="500" fill="#94a3b8">The macOS-Native Workspace Engine • Zero Daemons • 100% File System UI</text>
-
-    <!-- Feature Metric Pills on Right -->
-    <g transform="translate(680, 4)">
-      <g transform="translate(0, 0)">
-        <rect width="136" height="32" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-        <circle cx="16" cy="16" r="4" fill="#22c55e"/>
-        <text x="28" y="20" class="font-mono" font-size="11" font-weight="600" fill="#f1f5f9">0 Resident Daemons</text>
-      </g>
-      <g transform="translate(148, 0)">
-        <rect width="116" height="32" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-        <circle cx="16" cy="16" r="4" fill="#38bdf8"/>
-        <text x="28" y="20" class="font-mono" font-size="11" font-weight="600" fill="#f1f5f9">0 MB Idle RAM</text>
-      </g>
-      <g transform="translate(276, 0)">
-        <rect width="164" height="32" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-        <circle cx="16" cy="16" r="4" fill="#a855f7"/>
-        <text x="28" y="20" class="font-mono" font-size="11" font-weight="600" fill="#f1f5f9">Pure Python 3 Stdlib</text>
-      </g>
-    </g>
-  </g>
-
-  <!-- Main Showcase: Cupertino Floating Spotlight Window -->
-  <g transform="translate(210, 115)" class="window-float">
-    <!-- Outer Frosted Window Shell -->
-    <rect width="860" height="520" rx="22" fill="url(#glass-face)" stroke="url(#glass-specular)" stroke-width="1.2" filter="url(#macos-shadow)"/>
-
-    <!-- Spotlight Search Input Bar -->
-    <g transform="translate(24, 24)">
-      <rect width="812" height="64" rx="16" fill="url(#searchbar-fill)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+    <!-- Top Right Spec Badges -->
+    <g transform="translate(860, 0)">
+      <rect x="0" y="2" width="115" height="26" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+      <text x="57" y="19" class="sf-mono" font-size="11" fill="#94a3b8" text-anchor="middle">0 MB Idle RAM</text>
       
-      <!-- Apple Spotlight Magnifying Glass -->
-      <g transform="translate(22, 22)">
-        <circle cx="9" cy="9" r="8" fill="none" stroke="#94a3b8" stroke-width="2.2"/>
-        <line x1="15" y1="15" x2="22" y2="22" stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round"/>
+      <rect x="125" y="2" width="125" height="26" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+      <text x="187" y="19" class="sf-mono" font-size="11" fill="#94a3b8" text-anchor="middle">Zero Daemons</text>
+    </g>
+  </g>
+
+  <!-- Spotlight Overlay Window -->
+  <g transform="translate(180, 110)" filter="url(#spotlight-shadow)">
+    <!-- Glass Body -->
+    <rect width="920" height="440" rx="20" fill="url(#spotlight-glass)" stroke="rgba(255,255,255,0.14)" stroke-width="1.2"/>
+
+    <!-- Search Input Bar -->
+    <g transform="translate(24, 24)">
+      <rect width="872" height="64" rx="14" fill="url(#search-input-bg)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      
+      <!-- Magnifying Glass Icon -->
+      <g transform="translate(20, 20)">
+        <circle cx="10" cy="10" r="7.5" fill="none" stroke="#94a3b8" stroke-width="2.2"/>
+        <line x1="15.5" y1="15.5" x2="22" y2="22" stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round"/>
       </g>
 
-      <!-- Search Text Entry -->
-      <text x="64" y="39" class="font-sf" font-size="22" font-weight="500" fill="#ffffff" letter-spacing="-0.2">
-        <tspan fill="#60a5fa" font-weight="600">spatial-agents</tspan> live
-      </text>
-      <rect x="260" y="20" width="2.2" height="25" rx="1" fill="#38bdf8" class="cursor-blink"/>
+      <!-- Search Input Text -->
+      <text x="56" y="39" class="sf-display" font-size="22" font-weight="500" fill="#ffffff" letter-spacing="-0.2">openworldeye live</text>
+      <rect x="254" y="18" width="2" height="28" fill="#38bdf8" class="cursor"/>
 
-      <!-- Spotlight Scope Badges -->
-      <g transform="translate(680, 18)">
-        <rect width="110" height="28" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <text x="14" y="19" class="font-mono" font-size="12" font-weight="600" fill="#94a3b8">Spotlight ⌘␣</text>
-      </g>
+      <!-- Shortcut Hint Badge -->
+      <rect x="780" y="17" width="72" height="30" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="816" y="37" class="sf-text" font-size="13" font-weight="600" fill="#cbd5e1" text-anchor="middle">Return ↵</text>
     </g>
 
-    <!-- Search Results Section -->
-    <g transform="translate(24, 106)">
-      <!-- Category Header -->
-      <text x="14" y="14" class="font-mono" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.8">TOP HIT • LAUNCHPAD NATIVE INDEX</text>
-
-      <!-- Row 1: Selected Item (Live Demo Webloc) -->
-      <g transform="translate(0, 24)">
-        <rect width="812" height="74" rx="12" fill="url(#selection-grad)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <!-- Search Results List -->
+    <g transform="translate(24, 104)">
+      <!-- Selected Top Result -->
+      <g transform="translate(0, 0)">
+        <rect width="872" height="74" rx="12" fill="url(#selected-row)" filter="url(#badge-shadow)"/>
         
-        <!-- Safari / Browser App Icon -->
-        <rect x="16" y="13" width="48" height="48" rx="12" fill="#1e293b" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-        <circle cx="40" cy="37" r="14" fill="none" stroke="#38bdf8" stroke-width="2"/>
-        <ellipse cx="40" cy="37" rx="7" ry="14" fill="none" stroke="#38bdf8" stroke-width="1.6"/>
-        <line x1="26" y1="37" x2="54" y2="37" stroke="#38bdf8" stroke-width="1.6"/>
-        <polygon points="40,27 43,36 40,47 37,36" fill="#ef4444"/>
+        <!-- App Icon -->
+        <rect x="16" y="15" width="44" height="44" rx="10" fill="rgba(255,255,255,0.2)"/>
+        <text x="27" y="44" font-size="22">🌐</text>
 
-        <!-- Title & Subtitle -->
-        <text x="76" y="32" class="font-sf" font-size="16" font-weight="600" fill="#ffffff" letter-spacing="-0.2">spatial-agents — Live.webloc</text>
-        <text x="76" y="52" class="font-sf" font-size="12" font-weight="400" fill="rgba(255,255,255,0.85)">https://spatial-agents.app • 3D Spatial Agents Sandbox • Double-click to open</text>
+        <!-- Result Text -->
+        <text x="74" y="34" class="sf-display" font-size="17" font-weight="600" fill="#ffffff">OpenWorldEye — Live Deployment</text>
+        <text x="74" y="55" class="sf-mono" font-size="12" fill="rgba(255,255,255,0.85)">https://openworldeye.app · Opens in default browser</text>
 
-        <!-- Readiness Pill Badge (Yellow WARM) -->
-        <g transform="translate(700, 22)">
-          <rect width="96" height="30" rx="8" fill="#eab308" fill-opacity="0.25" stroke="#eab308" stroke-width="1.2"/>
-          <circle cx="16" cy="15" r="4.5" fill="#facc15"/>
-          <text x="27" y="19" class="font-mono" font-size="11" font-weight="700" fill="#fef08a">LP • WARM</text>
-        </g>
+        <!-- Readiness Tag -->
+        <rect x="760" y="24" width="94" height="26" rx="6" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="774" cy="37" r="4.5" fill="#ff7b00"/>
+        <text x="786" y="41" class="sf-mono" font-size="11" font-weight="600" fill="#ffffff">LP · HOT</text>
       </g>
 
-      <!-- Row 2: GitHub Repository Webloc -->
-      <g transform="translate(0, 108)">
-        <rect width="812" height="62" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-        <!-- GitHub Icon -->
-        <rect x="16" y="11" width="40" height="40" rx="10" fill="#181b2a" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-        <circle cx="36" cy="31" r="11" fill="none" stroke="#cbd5e1" stroke-width="1.8"/>
-        <path d="M30 36 C30 31, 33 29, 36 29 C39 29, 42 31, 42 36" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
-
-        <text x="68" y="29" class="font-sf" font-size="14" font-weight="600" fill="#e2e8f0">spatial-agents — GitHub.webloc</text>
-        <text x="68" y="47" class="font-mono" font-size="11" fill="#64748b">https://github.com/Cortana-Devs/3d-spatial-agents • git remote origin</text>
-
-        <rect x="730" y="18" width="66" height="26" rx="6" fill="rgba(255,255,255,0.06)"/>
-        <text x="742" y="35" class="font-mono" font-size="10" font-weight="600" fill="#94a3b8">GitHub</text>
+      <!-- Second Result (GitHub Repo) -->
+      <g transform="translate(0, 84)">
+        <rect width="872" height="66" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.04)"/>
+        <rect x="16" y="13" width="40" height="40" rx="9" fill="rgba(255,255,255,0.06)"/>
+        <text x="26" y="39" font-size="20">🐙</text>
+        <text x="74" y="32" class="sf-display" font-size="15" font-weight="500" fill="#e2e8f0">OpenWorldEye — GitHub Repository</text>
+        <text x="74" y="51" class="sf-mono" font-size="11" fill="#64748b">github.com/chama-x/openworldeye · Main branch</text>
+        <text x="815" y="40" class="sf-mono" font-size="12" fill="#64748b">⌘2</text>
       </g>
 
-      <!-- Row 3: Rendered Quick Look HTML Preview -->
-      <g transform="translate(0, 180)">
-        <rect width="812" height="62" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-        <!-- Document / QuickLook Icon -->
-        <rect x="16" y="11" width="40" height="40" rx="10" fill="#181b2a" stroke="#eab308" stroke-opacity="0.4" stroke-width="1"/>
-        <text x="27" y="36" class="font-mono" font-size="14" font-weight="800" fill="#facc15">&lt;&gt;</text>
-
-        <text x="68" y="29" class="font-sf" font-size="14" font-weight="600" fill="#e2e8f0">README.html <tspan fill="#facc15" font-size="12">(Spacebar → Quick Look)</tspan></text>
-        <text x="68" y="47" class="font-sf" font-size="11" fill="#64748b">Self-contained styled preview • Dark/Light mode CSS • Badges &amp; stats</text>
-
-        <rect x="715" y="18" width="81" height="26" rx="6" fill="#eab308" fill-opacity="0.15" stroke="#eab308" stroke-width="0.8"/>
-        <text x="727" y="35" class="font-mono" font-size="10" font-weight="600" fill="#facc15">Quick Look</text>
+      <!-- Third Result (Documentation Quick Look) -->
+      <g transform="translate(0, 158)">
+        <rect width="872" height="66" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/>
+        <rect x="16" y="13" width="40" height="40" rx="9" fill="rgba(255,255,255,0.06)"/>
+        <text x="26" y="39" font-size="20">📄</text>
+        <text x="74" y="32" class="sf-display" font-size="15" font-weight="500" fill="#e2e8f0">OpenWorldEye — Documentation Sheet</text>
+        <text x="74" y="51" class="sf-mono" font-size="11" fill="#64748b">README.html · Press Spacebar for Quick Look</text>
+        <text x="815" y="40" class="sf-mono" font-size="12" fill="#64748b">⌘3</text>
       </g>
 
-      <!-- Row 4: Finder Quick Actions / Terminal -->
-      <g transform="translate(0, 252)">
-        <rect width="812" height="62" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-        <!-- Automator Action Gear Icon -->
-        <rect x="16" y="11" width="40" height="40" rx="10" fill="#181b2a" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1"/>
-        <circle cx="36" cy="31" r="8" fill="none" stroke="#c084fc" stroke-width="2"/>
-        <circle cx="36" cy="31" r="3" fill="#c084fc"/>
-
-        <text x="68" y="29" class="font-sf" font-size="14" font-weight="600" fill="#e2e8f0">Finder Quick Action • Launchpad — Run</text>
-        <text x="68" y="47" class="font-mono" font-size="11" fill="#64748b">Auto port collision avoidance (PORT=3001) • Frozen lockfile install</text>
-
-        <rect x="720" y="18" width="76" height="26" rx="6" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="0.8"/>
-        <text x="732" y="35" class="font-mono" font-size="10" font-weight="600" fill="#d8b4fe">Automator</text>
+      <!-- Bottom Bar with Invariant Status -->
+      <g transform="translate(0, 240)">
+        <line x1="0" y1="0" x2="872" y2="0" stroke="rgba(255,255,255,0.08)"/>
+        <text x="8" y="24" class="sf-text" font-size="12" fill="#64748b">Indexed via native macOS <tspan fill="#94a3b8" font-weight="600">.webloc</tspan> plists in <tspan class="sf-mono" fill="#38bdf8">Launchpad/</tspan></text>
+        <text x="864" y="24" class="sf-mono" font-size="11" fill="#64748b" text-anchor="end">No resident processes</text>
       </g>
-    </g>
-
-    <!-- Bottom macOS Window Metadata Footer -->
-    <g transform="translate(24, 468)">
-      <line x1="0" y1="0" x2="812" y2="0" stroke="rgba(255,255,255,0.08)"/>
-      <text x="14" y="28" class="font-mono" font-size="11" fill="#64748b">
-        Finder: <tspan fill="#eab308">🟡 LP • WARM</tspan> • Idle Decay: <tspan fill="#94a3b8">120d</tspan> • Toolchain: <tspan fill="#38bdf8">pnpm</tspan> • Safety: <tspan fill="#22c55e">Non-TTY Protected</tspan>
-      </text>
-      <text x="680" y="28" class="font-sf" font-size="11" font-weight="500" fill="#94a3b8">Press <tspan font-weight="700" fill="#ffffff">⏎ Return</tspan> to launch</text>
     </g>
   </g>
 </svg>

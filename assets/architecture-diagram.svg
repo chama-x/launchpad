@@ -1,149 +1,160 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" width="100%" height="100%">
   <defs>
+    <!-- Background Gradient -->
     <linearGradient id="arch-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b0d14"/>
-      <stop offset="100%" stop-color="#141824"/>
+      <stop offset="0%" stop-color="#07080c"/>
+      <stop offset="50%" stop-color="#0b0e15"/>
+      <stop offset="100%" stop-color="#10131d"/>
     </linearGradient>
-    <linearGradient id="card-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 123, 0, 0.15)"/>
-      <stop offset="100%" stop-color="rgba(255, 123, 0, 0.03)"/>
+
+    <!-- Card Gradients -->
+    <linearGradient id="card-col1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 123, 0, 0.14)"/>
+      <stop offset="100%" stop-color="rgba(255, 123, 0, 0.02)"/>
     </linearGradient>
-    <linearGradient id="card-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(168, 85, 247, 0.15)"/>
-      <stop offset="100%" stop-color="rgba(168, 85, 247, 0.03)"/>
+    <linearGradient id="card-col2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(168, 85, 247, 0.14)"/>
+      <stop offset="100%" stop-color="rgba(168, 85, 247, 0.02)"/>
     </linearGradient>
-    <linearGradient id="card-grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(59, 130, 246, 0.15)"/>
-      <stop offset="100%" stop-color="rgba(59, 130, 246, 0.03)"/>
+    <linearGradient id="card-col3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(59, 130, 246, 0.14)"/>
+      <stop offset="100%" stop-color="rgba(59, 130, 246, 0.02)"/>
     </linearGradient>
+
+    <filter id="arch-shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.60"/>
+    </filter>
+
     <style>
-      .txt-title { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; font-size: 16px; font-weight: 700; fill: #ffffff; }
-      .txt-desc { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 12px; fill: #94a3b8; }
-      .txt-mono { font-family: "SF Mono", Menlo, monospace; font-size: 11px; fill: #cbd5e1; }
-      .tag-pill { font-family: "SF Mono", Menlo, monospace; font-size: 10px; font-weight: 600; }
+      .txt-display { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; font-weight: 700; fill: #ffffff; }
+      .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; fill: #94a3b8; }
+      .txt-mono { font-family: "SF Mono", Menlo, Monaco, monospace; font-size: 11px; fill: #cbd5e1; }
     </style>
   </defs>
 
-  <rect width="1000" height="520" fill="url(#arch-bg)" rx="16"/>
+  <!-- Background Base -->
+  <rect width="1100" height="520" fill="url(#arch-bg)" rx="16"/>
 
   <!-- Diagram Title -->
-  <text x="40" y="45" class="txt-title" font-size="20">LAUNCHPAD v2 ARCHITECTURE</text>
-  <text x="40" y="68" class="txt-desc">Decoupled Physical Storage, Self-Healing Engine &amp; Native macOS Surfaces</text>
-
-  <!-- Layer 1: Physical File System -->
-  <g transform="translate(40, 95)">
-    <rect width="280" height="380" rx="12" fill="url(#card-grad1)" stroke="#ff7b00" stroke-opacity="0.4" stroke-width="1.5"/>
-    <rect x="16" y="16" width="36" height="36" rx="8" fill="#ff7b00" fill-opacity="0.2"/>
-    <text x="28" y="40" font-size="18">💾</text>
-    <text x="62" y="32" class="txt-title">Physical Storage</text>
-    <text x="62" y="48" class="txt-desc">~/Projects/ (100% Pristine)</text>
-    <line x1="16" y1="64" x2="264" y2="64" stroke="rgba(255,255,255,0.08)"/>
-
-    <!-- Items -->
-    <g transform="translate(16, 80)">
-      <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-      <circle cx="15" cy="21" r="5" fill="#ff7b00"/>
-      <text x="28" y="25" class="txt-mono">🟠 HOT Repos (node_modules)</text>
-
-      <g transform="translate(0, 52)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <circle cx="15" cy="21" r="5" fill="#eab308"/>
-        <text x="28" y="25" class="txt-mono">🟡 WARM Repos (Clean git)</text>
-      </g>
-
-      <g transform="translate(0, 104)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <circle cx="15" cy="21" r="5" fill="#a855f7"/>
-        <text x="28" y="25" class="txt-mono">🟣 Pinned Repos (Local-Only)</text>
-      </g>
-
-      <g transform="translate(0, 156)">
-        <rect width="248" height="60" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="24" class="txt-mono" fill="#38bdf8">AGENTS.md &amp; Symlinks</text>
-        <text x="14" y="44" class="txt-desc" font-size="11">Harness boundaries &amp; orientation</text>
-      </g>
-
-      <g transform="translate(0, 226)">
-        <text x="6" y="24" class="txt-desc" font-size="11" fill="#fdba74">⚡ Zero internal file writes</text>
-        <text x="6" y="40" class="txt-desc" font-size="11" fill="#fdba74">⚡ In-place adoption only</text>
-      </g>
-    </g>
+  <g transform="translate(60, 44)">
+    <text x="0" y="24" class="txt-display" font-size="22" letter-spacing="-0.3">Systems Architecture &amp; Boundary Separation</text>
+    <text x="0" y="46" class="txt-sub" font-size="13">Decoupled Physical Storage • Self-Contained Engine • Native macOS Surfaces</text>
   </g>
 
-  <!-- Connectors -->
-  <path d="M320 285 L360 285" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,4"/>
-  <polygon points="360,281 368,285 360,289" fill="#a855f7"/>
+  <!-- 3 Columns Container -->
+  <g transform="translate(60, 105)">
+    
+    <!-- Column 1: Physical Working Trees -->
+    <g transform="translate(0, 0)" filter="url(#arch-shadow)">
+      <rect width="300" height="360" rx="14" fill="url(#card-col1)" stroke="#ff7b00" stroke-opacity="0.35" stroke-width="1.2"/>
+      
+      <circle cx="36" cy="36" r="14" fill="#381b0a" stroke="#ff7b00" stroke-width="1"/>
+      <text x="30" y="41" font-size="14">💾</text>
+      <text x="62" y="34" class="txt-display" font-size="16">Physical Storage</text>
+      <text x="62" y="50" class="txt-sub" font-size="11">~/Projects/ (100% Pristine)</text>
 
-  <!-- Layer 2: Launchpad Engine -->
-  <g transform="translate(360, 95)">
-    <rect width="280" height="380" rx="12" fill="url(#card-grad2)" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.5"/>
-    <rect x="16" y="16" width="36" height="36" rx="8" fill="#a855f7" fill-opacity="0.2"/>
-    <text x="28" y="40" font-size="18">⚙️</text>
-    <text x="62" y="32" class="txt-title">Launchpad Engine</text>
-    <text x="62" y="48" class="txt-desc">.launchpad/ (Mode 0700)</text>
-    <line x1="16" y1="64" x2="264" y2="64" stroke="rgba(255,255,255,0.08)"/>
+      <line x1="20" y1="68" x2="280" y2="68" stroke="rgba(255,255,255,0.06)"/>
 
-    <g transform="translate(16, 80)">
-      <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-      <text x="14" y="26" class="txt-mono">manifest.json (Atomic)</text>
+      <g transform="translate(18, 86)">
+        <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+        <circle cx="16" cy="20" r="4.5" fill="#ff7b00"/>
+        <text x="30" y="24" class="txt-mono">🟠 HOT Repos (Dependencies)</text>
 
-      <g transform="translate(0, 52)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">SafetyGate (Guardrail 3)</text>
-      </g>
+        <g transform="translate(0, 48)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <circle cx="16" cy="20" r="4.5" fill="#eab308"/>
+          <text x="30" y="24" class="txt-mono">🟡 WARM Repos (Clean git)</text>
+        </g>
 
-      <g transform="translate(0, 104)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">Toolchain &amp; Port Probe</text>
-      </g>
+        <g transform="translate(0, 96)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <circle cx="16" cy="20" r="4.5" fill="#a855f7"/>
+          <text x="30" y="24" class="txt-mono">🟣 Pinned Repos (Protected)</text>
+        </g>
 
-      <g transform="translate(0, 156)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">Decay Engine (21d / 120d)</text>
-      </g>
-
-      <g transform="translate(0, 208)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">GitHub Stable ID Sync</text>
+        <g transform="translate(0, 144)">
+          <rect width="264" height="48" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="20" class="txt-mono" fill="#38bdf8">AGENTS.md Contract</text>
+          <text x="14" y="36" class="txt-sub" font-size="10">Symlinked to CLAUDE.md / GEMINI.md</text>
+        </g>
       </g>
     </g>
-  </g>
 
-  <!-- Connectors -->
-  <path d="M640 285 L680 285" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4"/>
-  <polygon points="680,281 688,285 680,289" fill="#3b82f6"/>
+    <!-- Arrow 1 -> 2 -->
+    <g transform="translate(308, 175)">
+      <line x1="0" y1="0" x2="24" y2="0" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <polygon points="24,-4 32,0 24,4" fill="#a855f7"/>
+    </g>
 
-  <!-- Layer 3: Native macOS Human Surfaces -->
-  <g transform="translate(680, 95)">
-    <rect width="280" height="380" rx="12" fill="url(#card-grad3)" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1.5"/>
-    <rect x="16" y="16" width="36" height="36" rx="8" fill="#3b82f6" fill-opacity="0.2"/>
-    <text x="28" y="40" font-size="18"></text>
-    <text x="62" y="32" class="txt-title">macOS Native UI</text>
-    <text x="62" y="48" class="txt-desc">Launchpad/ (100% Disposable)</text>
-    <line x1="16" y1="64" x2="264" y2="64" stroke="rgba(255,255,255,0.08)"/>
+    <!-- Column 2: Engine & State -->
+    <g transform="translate(340, 0)" filter="url(#arch-shadow)">
+      <rect width="300" height="360" rx="14" fill="url(#card-col2)" stroke="#a855f7" stroke-opacity="0.35" stroke-width="1.2"/>
+      
+      <circle cx="36" cy="36" r="14" fill="#2a143d" stroke="#a855f7" stroke-width="1"/>
+      <text x="30" y="41" font-size="14">⚙️</text>
+      <text x="62" y="34" class="txt-display" font-size="16">Launchpad Engine</text>
+      <text x="62" y="50" class="txt-sub" font-size="11">.launchpad/ (Mode 0700)</text>
 
-    <g transform="translate(16, 80)">
-      <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-      <text x="14" y="26" class="txt-mono">🔍 Spotlight .webloc (⌘Space)</text>
+      <line x1="20" y1="68" x2="280" y2="68" stroke="rgba(255,255,255,0.06)"/>
 
-      <g transform="translate(0, 52)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">👁️ Quick Look (README.html)</text>
+      <g transform="translate(18, 86)">
+        <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+        <text x="14" y="24" class="txt-mono">manifest.json (Atomic POSIX)</text>
+
+        <g transform="translate(0, 48)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="24" class="txt-mono" fill="#22c55e">SafetyGate (Guardrail 3)</text>
+        </g>
+
+        <g transform="translate(0, 96)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="24" class="txt-mono">Toolchain &amp; Port Probe</text>
+        </g>
+
+        <g transform="translate(0, 144)">
+          <rect width="264" height="48" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="20" class="txt-mono" fill="#c084fc">Single-file Python 3 Stdlib</text>
+          <text x="14" y="36" class="txt-sub" font-size="10">0 MB RAM · Zero Background Daemons</text>
+        </g>
       </g>
+    </g>
 
-      <g transform="translate(0, 104)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">🏷️ Finder Tags (libc.setxattr)</text>
-      </g>
+    <!-- Arrow 2 -> 3 -->
+    <g transform="translate(648, 175)">
+      <line x1="0" y1="0" x2="24" y2="0" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <polygon points="24,-4 32,0 24,4" fill="#3b82f6"/>
+    </g>
 
-      <g transform="translate(0, 156)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">⚡ Quick Actions (Automator)</text>
-      </g>
+    <!-- Column 3: Native macOS Surfaces -->
+    <g transform="translate(680, 0)" filter="url(#arch-shadow)">
+      <rect width="300" height="360" rx="14" fill="url(#card-col3)" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="1.2"/>
+      
+      <circle cx="36" cy="36" r="14" fill="#0f2347" stroke="#3b82f6" stroke-width="1"/>
+      <text x="30" y="41" font-size="14">🍎</text>
+      <text x="62" y="34" class="txt-display" font-size="16">macOS Surfaces</text>
+      <text x="62" y="50" class="txt-sub" font-size="11">Launchpad/ (100% Disposable)</text>
 
-      <g transform="translate(0, 208)">
-        <rect width="248" height="42" rx="6" fill="#181b2a" stroke="rgba(255,255,255,0.06)"/>
-        <text x="14" y="26" class="txt-mono">📂 Folder Actions (AppleScript)</text>
+      <line x1="20" y1="68" x2="280" y2="68" stroke="rgba(255,255,255,0.06)"/>
+
+      <g transform="translate(18, 86)">
+        <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+        <text x="14" y="24" class="txt-mono">Spotlight (⌘Space .webloc)</text>
+
+        <g transform="translate(0, 48)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="24" class="txt-mono">Finder Tag Attributes (xattr)</text>
+        </g>
+
+        <g transform="translate(0, 96)">
+          <rect width="264" height="40" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="24" class="txt-mono">Quick Look (Space README.html)</text>
+        </g>
+
+        <g transform="translate(0, 144)">
+          <rect width="264" height="48" rx="6" fill="#181a24" stroke="rgba(255,255,255,0.05)"/>
+          <text x="14" y="20" class="txt-mono" fill="#60a5fa">Finder Quick Actions</text>
+          <text x="14" y="36" class="txt-sub" font-size="10">Automator Services in ~/Library</text>
+        </g>
       </g>
     </g>
   </g>

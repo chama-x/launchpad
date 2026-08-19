@@ -1104,31 +1104,15 @@ done
 	<dict/>
 	<key>workflowMetaData</key>
 	<dict>
-		<key>applicationBundleIDsByPath</key>
-		<dict/>
-		<key>applicationPaths</key>
-		<array/>
-		<key>inputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject</string>
-		<key>outputTypeIdentifier</key>
-		<string>com.apple.Automator.nothing</string>
-		<key>presentationMode</key>
-		<integer>15</integer>
-		<key>processesInput</key>
-		<false/>
 		<key>serviceApplicationBundleID</key>
 		<string>com.apple.finder</string>
 		<key>serviceApplicationPath</key>
 		<string>/System/Library/CoreServices/Finder.app</string>
 		<key>serviceInputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject</string>
+		<string>com.apple.Automator.fileSystemObject.folder</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
-		<false/>
-		<key>systemImageName</key>
-		<string>NSActionTemplate</string>
-		<key>useAutomaticInputType</key>
 		<false/>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>
@@ -1139,22 +1123,45 @@ done
     return wflow_content
 
 
-def generate_automator_info_plist() -> str:
-    return """<?xml version="1.0" encoding="UTF-8"?>
+def generate_automator_info_plist(action_name: str) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", action_name.lower()).strip("-")
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.launchpad.workflow.{slug}</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>{action_name}</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
+	<key>CFBundleVersion</key>
+	<string>2.0</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
-			<key>NSBackgroundColorName</key>
-			<string>background</string>
-			<key>NSBackgroundMode</key>
-			<integer>1</integer>
-			<key>NSIconName</key>
-			<string>NSActionTemplate</string>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>{action_name}</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>runWorkflowAsService</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSApplicationIdentifier</key>
+				<string>com.apple.finder</string>
+			</dict>
 			<key>NSSendFileTypes</key>
 			<array>
+				<string>public.folder</string>
+				<string>public.directory</string>
 				<string>public.item</string>
 			</array>
 		</dict>
@@ -1213,8 +1220,51 @@ class ServiceInstaller:
                 info_file = contents_dir / "Info.plist"
 
                 wflow_file.write_text(generate_automator_wflow_xml(name, cmd), encoding="utf-8")
-                info_file.write_text(generate_automator_info_plist(), encoding="utf-8")
+                info_file.write_text(generate_automator_info_plist(name), encoding="utf-8")
                 installed_count += 1
+            except Exception:
+                pass
+
+        # Trigger macOS pasteboard service cache update and activation if default dir
+        if not custom_services_dir:
+            try:
+                # Enable services in user pbs defaults
+                p = subprocess.run(["defaults", "export", "pbs", "-"], capture_output=True, check=False)
+                pbs_data = plistlib.loads(p.stdout) if p.returncode == 0 and p.stdout else {}
+                if "NSServicesStatus" not in pbs_data:
+                    pbs_data["NSServicesStatus"] = {}
+
+                for name, _ in AUTOMATOR_ACTIONS:
+                    slug = re.sub(r"[^a-zA-Z0-9]+", "-", name.lower()).strip("-")
+                    keys = [
+                        f"(null) - {name} - runWorkflowAsService",
+                        f"com.launchpad.workflow.{slug} - {name} - runWorkflowAsService"
+                    ]
+                    for k in keys:
+                        pbs_data["NSServicesStatus"][k] = {
+                            "key_equivalent": "",
+                            "presentation_modes": {
+                                "ContextMenu": 1,
+                                "ServicesMenu": 1,
+                                "FinderPreview": 1,
+                                "TouchBar": 1
+                            },
+                            "enabled_context_menu": 1,
+                            "enabled_services_menu": 1
+                        }
+
+                with tempfile.NamedTemporaryFile(suffix=".plist", delete=False) as tf:
+                    plistlib.dump(pbs_data, tf)
+                    tf_name = tf.name
+
+                subprocess.run(["defaults", "import", "pbs", tf_name], capture_output=True, check=False)
+                try:
+                    os.unlink(tf_name)
+                except OSError:
+                    pass
+
+                subprocess.run(["/System/Library/CoreServices/pbs", "-update"], capture_output=True, check=False)
+                subprocess.run(["/System/Library/CoreServices/pbs", "-flush"], capture_output=True, check=False)
             except Exception:
                 pass
 
