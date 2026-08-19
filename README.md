@@ -5,7 +5,9 @@
 **The native workspace manager for macOS.**  
 Turn Finder and Spotlight into your project launcher, status board, and storage lifecycle engine.
 
-*Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library*
+<br/>
+
+<img src="assets/specs-zero-footprint.svg" alt="Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library" width="100%" />
 
 <br/>
 
