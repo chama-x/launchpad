@@ -2,28 +2,42 @@
 
 # Launchpad
 
-**Your repositories, natively integrated into macOS.**  
-Launch live builds in two keystrokes. Reclaim gigabytes of idle disk space.  
-*Zero resident daemons · 0 MB idle memory · Pure Python 3 standard library*
+**The native workspace manager for macOS.**  
+Turn Finder and Spotlight into your project launcher, status board, and storage lifecycle engine.
+
+*Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library*
 
 <br/>
 
+</div>
+
 ```bash
-# 1-Line Quick Install for macOS
+# 1. Audit the single-file source (pure standard library Python):
+less engine/launchpad.py
+
+# 2. Try it in your terminal without installing:
+python3 engine/launchpad.py status
+
+# 3. Or install the CLI symlink to ~/.local/bin:
 curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
 ```
 
 <br/>
 
-<img src="assets/finder-before-after.jpg" alt="Before and After Launchpad macOS Finder comparison" width="100%" style="border-radius: 12px;" />
-
+<div align="center">
+  <img src="assets/finder-before-after.jpg" alt="Standard macOS Finder vs Launchpad tiering comparison" width="100%" style="border-radius: 12px;" />
+  <p><em>Figure 1: Standard macOS Finder vs. Launchpad in-place tiering across 33 local repositories.</em></p>
 </div>
 
 ---
 
-## Zero Background Footprint
+## How It Works (Without Daemons)
 
-Traditional developer managers run heavy Electron apps or background Docker daemons. Launchpad turns macOS itself into your manager: commands execute in milliseconds and exit immediately. When idle, memory consumption is literally zero bytes.
+Most developer tools require a resident background process, an Electron desktop app, or a Docker container. 
+
+Launchpad has **no resident background daemons and no scheduled cron jobs**. 
+
+When you run a command like `launchpad status` or `launchpad sync`, it reads git cleanliness and file modification times in **~40ms**, applies requested updates to Spotlight shortcuts and Finder tags, and **immediately exits**. When you aren't actively running a command, Launchpad consumes **0 CPU cycles and 0 bytes of RAM**.
 
 <div align="center">
   <img src="assets/activity-monitor.jpg" alt="macOS Activity Monitor Real-Time Footprint" width="85%" style="border-radius: 12px;" />
@@ -31,17 +45,30 @@ Traditional developer managers run heavy Electron apps or background Docker daem
 
 ---
 
+## System Boundaries & Invariants
+
+Launchpad operates under strict, non-negotiable workspace boundaries:
+
+| Surface | What Launchpad Does | What Launchpad NEVER Does |
+| :--- | :--- | :--- |
+| **`~/Projects/`** | Reads git cleanliness and applies native macOS color dots (`xattr`) | Never renames, moves, or deletes user source code |
+| **`.launchpad/`** | Stores atomic state (`manifest.json`) with Mode `0700` permissions | Never writes state inside individual project repositories |
+| **`Launchpad/`** | Generates disposable `.webloc` Spotlight shortcuts and `README.html` | Never stores unrecoverable state (100% disposable and rebuildable) |
+| **`~/.local/bin/`** | Creates a single `launchpad` executable symlink | Never requires `sudo`, root permissions, or kernel extensions |
+
+---
+
 ## Native Capabilities
 
 ### 1. Instant Recall (`⌘Space`)
-Launchpad generates lightweight `.webloc` shortcut files inside a disposable `Launchpad/` index. macOS Spotlight indexes them automatically, opening live URLs or GitHub repos in two keystrokes.
+Launchpad generates lightweight `.webloc` shortcut files inside the disposable `Launchpad/` index. macOS Spotlight indexes them automatically, opening live deployments or GitHub repositories in two keystrokes.
 
 <div align="center">
   <img src="assets/spotlight-instant-recall.jpg" alt="Native macOS Spotlight Instant Recall" width="85%" style="border-radius: 12px;" />
 </div>
 
 ### 2. Readiness at a Glance (Finder Tags)
-Launchpad writes native macOS extended attributes (`libc.setxattr`) directly to your project folders. When browsing Finder, runtime readiness and disk state are visible without opening a terminal.
+Launchpad applies native macOS color tags (`libc.setxattr`) directly to your project folders. When browsing Finder, runtime readiness and disk state are visible without opening a terminal.
 
 <div align="center">
   <img src="assets/finder-tags.jpg" alt="Native macOS Finder Tags Readiness at a Glance" width="85%" style="border-radius: 12px;" />
@@ -53,9 +80,9 @@ Every indexed project includes a rendered `README.html`. Tapping **Spacebar** on
 ### 4. Adaptive Storage: "Fat when working, lean when resting"
 Launchpad automatically scales projects down as they sit idle:
 
-* **21 days idle:** Removes `node_modules` and build caches (`HOT` $\rightarrow$ `WARM`).
+* **21 days idle:** Removes `node_modules` and build caches (`HOT` $\rightarrow$ `WARM`), saving ~98% disk space per repo.
 * **120 days idle:** Safely evicts the clean local clone (`WARM` $\rightarrow$ `COLD`), keeping the project discoverable in Spotlight.
-* **Instant Hydration:** Run `launchpad hydrate <project>` (or right-click in Finder $\rightarrow$ **Quick Actions** $\rightarrow$ **Launchpad — Hydrate**) to re-clone and install frozen lockfiles in seconds.
+* **Instant Hydration:** Run `launchpad hydrate <project>` (or right-click in Finder $\rightarrow$ **Quick Actions** $\rightarrow$ **Launchpad — Hydrate**) to re-clone and install frozen lockfiles (`pnpm install`, `bun install`, `npm ci`, `cargo build`) in seconds.
 
 ---
 
@@ -63,7 +90,7 @@ Launchpad automatically scales projects down as they sit idle:
 
 Launchpad will never delete, demote, or evict a project if:
 
-1. `git status` shows untracked or modified files.
+1. `git status` shows untracked, modified, or staged files.
 2. `git stash list` contains unapplied stashes.
 3. `git log` shows unpushed commits on any local branch.
 
@@ -75,7 +102,7 @@ Non-interactive `--force` calls (such as background scripts or automated AI tool
 
 ## Built for Humans. Engineered for Autonomous AI Agents.
 
-Launchpad acts as the unified workspace bridge: humans navigate visually through Finder and Spotlight, while autonomous coding agents (Claude Code, Cursor, Gemini CLI, Antigravity) interact through structured machine protocols.
+Launchpad acts as the universal workspace bridge: humans navigate visually through Finder and Spotlight, while autonomous coding agents (Claude Code, Cursor, Gemini CLI, Antigravity) interact through structured machine protocols.
 
 <div align="center">
   <img src="assets/agent-bridge.jpg" alt="Launchpad Unified Workspace Bridge for Humans and AI Agents" width="90%" style="border-radius: 12px;" />
