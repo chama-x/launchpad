@@ -31,13 +31,9 @@ curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh |
 
 ---
 
-## How It Works (Without Daemons)
+## Zero Background Footprint
 
-Most developer tools require a resident background process, an Electron desktop app, or a Docker container. 
-
-Launchpad has **no resident background daemons and no scheduled cron jobs**. 
-
-When you run a command like `launchpad status` or `launchpad sync`, it reads git cleanliness and file modification times in **~40ms**, applies requested updates to Spotlight shortcuts and Finder tags, and **immediately exits**. When you aren't actively running a command, Launchpad consumes **0 CPU cycles and 0 bytes of RAM**.
+Traditional developer managers run heavy Electron apps or background Docker daemons. Launchpad turns macOS itself into your manager: commands execute in milliseconds and exit immediately. When idle, memory consumption is literally zero bytes.
 
 <div align="center">
   <img src="assets/activity-monitor.jpg" alt="macOS Activity Monitor Real-Time Footprint" width="85%" style="border-radius: 12px;" />
@@ -82,7 +78,11 @@ Launchpad automatically scales projects down as they sit idle:
 
 * **21 days idle:** Removes `node_modules` and build caches (`HOT` $\rightarrow$ `WARM`), saving ~98% disk space per repo.
 * **120 days idle:** Safely evicts the clean local clone (`WARM` $\rightarrow$ `COLD`), keeping the project discoverable in Spotlight.
-* **Instant Hydration:** Run `launchpad hydrate <project>` (or right-click in Finder $\rightarrow$ **Quick Actions** $\rightarrow$ **Launchpad — Hydrate**) to re-clone and install frozen lockfiles (`pnpm install`, `bun install`, `npm ci`, `cargo build`) in seconds.
+* **Instant Hydration:** Run `launchpad hydrate <project>` (or right-click in Finder $\rightarrow$ **Quick Actions** $\rightarrow$ **Launchpad — Hydrate**) to re-clone and install frozen lockfiles in seconds.
+
+<div align="center">
+  <img src="assets/storage-lifecycle.jpg" alt="Launchpad 3-Tier Storage Lifecycle" width="90%" style="border-radius: 12px;" />
+</div>
 
 ---
 
@@ -96,6 +96,10 @@ Launchpad will never delete, demote, or evict a project if:
 
 If any check fails, the project is flagged for attention and left untouched on disk.
 
+<div align="center">
+  <img src="assets/zero-risk-safety.jpg" alt="The Zero-Risk Invariant: Your Code is Sacred" width="90%" style="border-radius: 12px;" />
+</div>
+
 Non-interactive `--force` calls (such as background scripts or automated AI tools) fail closed with exit code `1`. Force eviction strictly requires an interactive human in a terminal.
 
 ---
@@ -103,10 +107,6 @@ Non-interactive `--force` calls (such as background scripts or automated AI tool
 ## Built for Humans. Engineered for Autonomous AI Agents.
 
 Launchpad acts as the universal workspace bridge: humans navigate visually through Finder and Spotlight, while autonomous coding agents (Claude Code, Cursor, Gemini CLI, Antigravity) interact through structured machine protocols.
-
-<div align="center">
-  <img src="assets/agent-bridge.jpg" alt="Launchpad Unified Workspace Bridge for Humans and AI Agents" width="90%" style="border-radius: 12px;" />
-</div>
 
 * **`AGENTS.md` Workspace Contract:** Automatically placed at the workspace root (symlinked to `CLAUDE.md` and `GEMINI.md`) to establish rigid boundaries, safety rules, and CLI tools for AI agents.
 * **Structured Context Cards:** Agents run `launchpad context <project>` to receive machine-readable JSON cards detailing runtime managers (`mise`, `volta`, `fnm`, `nvm`), lockfiles, and run recipes.
