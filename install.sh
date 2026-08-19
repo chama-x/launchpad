@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Launchpad v2 — 1-Line Installer for macOS
-# Usage: curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
+# Launchpad v2 — 1-Line Smart Installer for macOS
+# Usage:
+#   curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash -s -- /custom/path
 # ==============================================================================
 
 set -euo pipefail
@@ -27,14 +29,46 @@ if ! command -v python3 >/dev/null 2>&1; then
     exit 1
 fi
 
-# 3. Determine target workspace
-WORKSPACE_ROOT="${LAUNCHPAD_HOME:-$HOME/Projects}"
+# 3. Smart Workspace Directory Resolution
+# Priority:
+#   1. Passed as argument ($1)
+#   2. Environment variable ($LAUNCHPAD_HOME)
+#   3. Current directory if not $HOME / root (e.g. user ran from their existing project folder)
+#   4. Existing standard candidates (~/Projects, ~/Developer, ~/Code, ~/Workspace, ~/src, ~/Desktop/0/Projects)
+#   5. Default fallback (~/Projects)
+
+TARGET_DIR="${1:-${LAUNCHPAD_HOME:-}}"
+
+if [[ -z "$TARGET_DIR" ]]; then
+    if [[ "$PWD" != "$HOME" && "$PWD" != "/" && "$PWD" != "/tmp"* ]]; then
+        TARGET_DIR="$PWD"
+    else
+        CANDIDATES=(
+            "$HOME/Projects"
+            "$HOME/Developer"
+            "$HOME/Development"
+            "$HOME/Code"
+            "$HOME/Workspace"
+            "$HOME/workspace"
+            "$HOME/src"
+            "$HOME/Desktop/0/Projects"
+        )
+        for cand in "${CANDIDATES[@]}"; do
+            if [[ -d "$cand" ]]; then
+                TARGET_DIR="$cand"
+                break
+            fi
+        done
+    fi
+fi
+
+WORKSPACE_ROOT="${TARGET_DIR:-$HOME/Projects}"
 mkdir -p "$WORKSPACE_ROOT"
 
 ENGINE_DIR="$WORKSPACE_ROOT/.launchpad/engine"
 mkdir -p "$ENGINE_DIR"
 
-echo -e "${BLUE}==>${NC} Installing Launchpad engine into ${BOLD}$WORKSPACE_ROOT${NC}..."
+echo -e "${BLUE}==>${NC} Target Workspace: ${BOLD}$WORKSPACE_ROOT${NC}"
 
 # 4. Download latest engine script
 REPO_URL="https://raw.githubusercontent.com/chama-x/launchpad/main/engine/launchpad.py"
@@ -43,8 +77,9 @@ TEMP_SCRIPT=$(mktemp /tmp/launchpad_install.XXXXXX)
 if curl -fsSL "$REPO_URL" -o "$TEMP_SCRIPT" 2>/dev/null; then
     mv "$TEMP_SCRIPT" "$ENGINE_DIR/launchpad.py"
 elif [[ -f "engine/launchpad.py" ]]; then
-    # Local fallback
+    # Local repo fallback
     cp "engine/launchpad.py" "$ENGINE_DIR/launchpad.py"
+    rm -f "$TEMP_SCRIPT"
 else
     echo -e "${RED}Failed to download launchpad.py. Check your internet connection.${NC}"
     rm -f "$TEMP_SCRIPT"
