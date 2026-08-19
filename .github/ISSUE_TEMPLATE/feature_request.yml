@@ -1,0 +1,32 @@
+name: Feature Request
+description: Propose a new feature or improvement for Launchpad
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Launchpad adheres strictly to **zero external dependencies** and **zero resident background daemons**. Features must respect native macOS primitives (Finder, Spotlight, Quick Look) and preserve data safety invariants.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What specific workflow friction or limitation are you experiencing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: How should Launchpad address this problem natively?
+    validations:
+      required: true
+
+  - type: textarea
+    id: invariants
+    attributes:
+      label: Invariant Preservation
+      description: How does this proposed change maintain zero external dependencies and zero repo pollution?
+    validations:
+      required: false

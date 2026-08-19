@@ -1,0 +1,50 @@
+name: Bug Report
+description: Report a reproducible issue or unexpected behavior in Launchpad
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please ensure you are running the latest version of Launchpad on macOS 13+ (Ventura, Sonoma, or Sequoia).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem Description
+      description: A clear and concise description of the unexpected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: What exact command or action did you run?
+      placeholder: |
+        1. cd ~/Projects
+        2. launchpad status
+        3. Observed error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Info
+      description: Run `sw_vers` and `python3 --version` and paste the output.
+      render: shell
+      placeholder: |
+        $ sw_vers
+        ProductName: macOS
+        ProductVersion: 15.0
+        $ python3 --version
+        Python 3.11.8
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs or Output
+      description: Paste any output from `launchpad doctor` or the terminal.
+      render: shell
