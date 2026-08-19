@@ -108,6 +108,10 @@ Non-interactive `--force` calls (such as background scripts or automated AI tool
 
 Launchpad acts as the universal workspace bridge: humans navigate visually through Finder and Spotlight, while autonomous coding agents (Claude Code, Cursor, Gemini CLI, Antigravity) interact through structured machine protocols.
 
+<div align="center">
+  <img src="assets/agent-bridge.jpg" alt="Launchpad Unified Workspace Bridge for Humans and AI Agents" width="90%" style="border-radius: 12px;" />
+</div>
+
 * **`AGENTS.md` Workspace Contract:** Automatically placed at the workspace root (symlinked to `CLAUDE.md` and `GEMINI.md`) to establish rigid boundaries, safety rules, and CLI tools for AI agents.
 * **Structured Context Cards:** Agents run `launchpad context <project>` to receive machine-readable JSON cards detailing runtime managers (`mise`, `volta`, `fnm`, `nvm`), lockfiles, and run recipes.
 * **Collision-Free Port Allocator:** `launchpad run <project>` automatically probes port availability. If port 3000 is busy, it cleanly binds to `3001` with `PORT=3001`, preventing agent boot collisions.
