@@ -1,40 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 44" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 38" width="100%" height="100%">
   <defs>
-    <linearGradient id="pill-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.07)"/>
+    <linearGradient id="strip-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.06)"/>
       <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)"/>
     </linearGradient>
 
-    <linearGradient id="pill-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.12)"/>
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.04)"/>
-    </linearGradient>
-
     <style>
-      .sf-badge { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", sans-serif; font-weight: 500; font-size: 13.5px; fill: #e2e8f0; }
+      .sf-text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", sans-serif; font-size: 12.5px; fill: #cbd5e1; }
       .sf-bold { font-weight: 700; fill: #ffffff; }
-      .sf-mono { font-family: "SF Mono", Menlo, Monaco, monospace; font-size: 12px; }
     </style>
   </defs>
 
-  <!-- Pill 1: 0 MB Idle RAM -->
-  <g transform="translate(40, 2)">
-    <rect width="260" height="40" rx="20" fill="url(#pill-bg)" stroke="url(#pill-stroke)" stroke-width="1"/>
-    <circle cx="24" cy="20" r="4.5" fill="#10b981"/>
-    <text x="38" y="25" class="sf-badge"><tspan class="sf-bold">0 MB</tspan> Idle RAM</text>
+  <!-- Single Seamless Frosted Pill Strip -->
+  <rect x="1" y="1" width="758" height="36" rx="18" fill="url(#strip-bg)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+
+  <!-- Metric 1: 0 MB Idle RAM -->
+  <g transform="translate(36, 0)">
+    <circle cx="0" cy="19" r="4" fill="#10b981"/>
+    <text x="12" y="23" class="sf-text"><tspan class="sf-bold">0 MB</tspan> Idle RAM</text>
   </g>
 
-  <!-- Pill 2: 0 Resident Daemons -->
-  <g transform="translate(350, 2)">
-    <rect width="260" height="40" rx="20" fill="url(#pill-bg)" stroke="url(#pill-stroke)" stroke-width="1"/>
-    <circle cx="24" cy="20" r="4.5" fill="#0ea5e9"/>
-    <text x="38" y="25" class="sf-badge"><tspan class="sf-bold">0</tspan> Resident Daemons</text>
+  <!-- Divider 1 -->
+  <line x1="250" y1="10" x2="250" y2="28" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Metric 2: Zero Resident Daemons -->
+  <g transform="translate(285, 0)">
+    <circle cx="0" cy="19" r="4" fill="#0ea5e9"/>
+    <text x="12" y="23" class="sf-text"><tspan class="sf-bold">Zero</tspan> Resident Daemons</text>
   </g>
 
-  <!-- Pill 3: Pure Python 3 Stdlib -->
-  <g transform="translate(660, 2)">
-    <rect width="260" height="40" rx="20" fill="url(#pill-bg)" stroke="url(#pill-stroke)" stroke-width="1"/>
-    <circle cx="24" cy="20" r="4.5" fill="#a855f7"/>
-    <text x="38" y="25" class="sf-badge"><tspan class="sf-bold">Pure</tspan> Python 3 Stdlib</text>
+  <!-- Divider 2 -->
+  <line x1="520" y1="10" x2="520" y2="28" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Metric 3: Pure Python 3 Stdlib -->
+  <g transform="translate(555, 0)">
+    <circle cx="0" cy="19" r="4" fill="#a855f7"/>
+    <text x="12" y="23" class="sf-text"><tspan class="sf-bold">Pure</tspan> Python 3 Stdlib</text>
   </g>
 </svg>
