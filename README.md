@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh |
 
 ## How it works
 
-Launchpad turns your macOS file system into an autonomous project manager:
+Launchpad turns your native macOS file system into an autonomous project manager:
 
 * **Press `⌘Space`. Type `project live`. Hit Return.**  
   Your deployment opens in your default browser.
@@ -33,12 +33,6 @@ Launchpad turns your macOS file system into an autonomous project manager:
   Quick Look renders `README.html` without opening an editor.
 * **Right-click any folder.**  
   Quick Actions let you hydrate, run, or evict projects directly from Finder.
-
----
-
-<div align="center">
-  <img src="assets/finder-native-experience.svg" alt="Native macOS Finder Experience" width="100%" />
-</div>
 
 ---
 
@@ -70,15 +64,9 @@ Automated scripts calling `--force` in non-interactive shells hard-fail by desig
 
 Autonomous tools (Claude Code, Cursor, Gemini CLI, Antigravity) navigate workspace boundaries deterministically:
 
-* **`AGENTS.md` at root:** Standardized permission boundaries, toolchains, and rules.
+* **`AGENTS.md` at root:** Defines workspace permissions and toolchain paths.
 * **Structured context:** `launchpad context <id>` outputs machine-readable JSON project cards.
 * **Port collision prevention:** `launchpad run <id>` automatically allocates the next open port (`PORT=3001`).
-
----
-
-<div align="center">
-  <img src="assets/architecture-diagram.svg" alt="Launchpad Systems Architecture" width="100%" />
-</div>
 
 ---
 
