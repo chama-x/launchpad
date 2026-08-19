@@ -5,20 +5,15 @@
 **The native workspace manager for macOS.**  
 Turn Finder and Spotlight into your project launcher, status board, and storage lifecycle engine.
 
-<br/>
-
-<img src="assets/specs-zero-footprint.svg" alt="Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library" width="100%" />
-
-<br/>
+<p align="center">
+  <img src="assets/specs-zero-footprint.svg" alt="Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library" width="85%" />
+</p>
 
 </div>
 
 ```bash
-# 1-Line Quick Install for macOS
+# 1-Line Install for macOS (adds `launchpad` to your PATH):
 curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
-
-# Or install to a custom workspace directory
-curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash -s -- ~/Developer
 ```
 
 <br/>
