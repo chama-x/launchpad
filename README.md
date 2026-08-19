@@ -15,7 +15,7 @@ curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh |
 
 <br/>
 
-<img src="assets/finder-window.png" alt="Native macOS Finder list view with Launchpad readiness tags" width="90%" />
+<img src="assets/finder-before-after.jpg" alt="Before and After Launchpad macOS Finder comparison" width="100%" style="border-radius: 12px;" />
 
 </div>
 
@@ -44,7 +44,7 @@ Launchpad generates lightweight `.webloc` shortcut files inside a disposable `La
 * `⌘Space` $\rightarrow$ `project github` $\rightarrow$ `Return` opens the remote GitHub repository.
 
 <div align="center">
-  <img src="assets/spotlight-window.png" alt="Native macOS Spotlight Search" width="75%" />
+  <img src="assets/spotlight-window.png" alt="Native macOS Spotlight Search" width="75%" style="border-radius: 10px;" />
 </div>
 
 ### 2. Readiness at a Glance (Finder Tags)
@@ -87,7 +87,7 @@ Launchpad acts as the universal workspace harness for modern AI coding agents (C
 
 * **`AGENTS.md` Workspace Contract:** Automatically placed at the workspace root (symlinked to `CLAUDE.md` and `GEMINI.md`) to establish rigid boundaries, safety rules, and CLI tools for AI agents.
 * **Structured Context Cards:** Agents run `launchpad context <project>` to receive machine-readable JSON cards detailing runtime managers (`mise`, `volta`, `fnm`, `nvm`), lockfiles, and run recipes.
-* **Collision-Free Port Allocator:** `launchpad run <project>` automatically probes port availability. If port `3000` is busy, it cleanly binds to `3001` with `PORT=3001`, preventing agent boot collisions.
+* **Collision-Free Port Allocator:** `launchpad run <project>` automatically probes port availability. If port 3000 is busy, it cleanly binds to 3001 with `PORT=3001`, preventing agent boot collisions.
 
 ---
 
