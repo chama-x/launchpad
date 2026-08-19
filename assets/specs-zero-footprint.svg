@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 140" width="100%" height="100%">
+  <defs>
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c1f26"/>
+      <stop offset="100%" stop-color="#12141a"/>
+    </linearGradient>
+
+    <linearGradient id="card-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)"/>
+    </linearGradient>
+
+    <style>
+      .sf-display { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", sans-serif; }
+      .sf-mono { font-family: "SF Mono", Menlo, Monaco, monospace; }
+    </style>
+  </defs>
+
+  <!-- Card 1: Zero Resident Memory -->
+  <g transform="translate(10, 10)">
+    <rect width="298" height="120" rx="14" fill="url(#card-bg)" stroke="url(#card-border)" stroke-width="1"/>
+    
+    <!-- Accent Indicator (Emerald) -->
+    <circle cx="32" cy="34" r="5" fill="#10b981"/>
+    <text x="46" y="38" class="sf-mono" font-size="11" font-weight="600" fill="#10b981" letter-spacing="0.5">MEMORY FOOTPRINT</text>
+    
+    <text x="30" y="78" class="sf-display" font-size="32" font-weight="700" fill="#ffffff" letter-spacing="-0.5">0 MB</text>
+    <text x="110" y="76" class="sf-display" font-size="15" font-weight="500" fill="#94a3b8">Idle RAM</text>
+    
+    <text x="30" y="104" class="sf-display" font-size="12" fill="#64748b">Zero resident memory when idle</text>
+  </g>
+
+  <!-- Card 2: Zero Background Daemons -->
+  <g transform="translate(331, 10)">
+    <rect width="298" height="120" rx="14" fill="url(#card-bg)" stroke="url(#card-border)" stroke-width="1"/>
+    
+    <!-- Accent Indicator (Sky Blue) -->
+    <circle cx="32" cy="34" r="5" fill="#0ea5e9"/>
+    <text x="46" y="38" class="sf-mono" font-size="11" font-weight="600" fill="#0ea5e9" letter-spacing="0.5">BACKGROUND PROCESSES</text>
+    
+    <text x="30" y="78" class="sf-display" font-size="32" font-weight="700" fill="#ffffff" letter-spacing="-0.5">0</text>
+    <text x="62" y="76" class="sf-display" font-size="15" font-weight="500" fill="#94a3b8">Daemons</text>
+    
+    <text x="30" y="104" class="sf-display" font-size="12" fill="#64748b">Process exits immediately on completion</text>
+  </g>
+
+  <!-- Card 3: Zero External Dependencies -->
+  <g transform="translate(652, 10)">
+    <rect width="298" height="120" rx="14" fill="url(#card-bg)" stroke="url(#card-border)" stroke-width="1"/>
+    
+    <!-- Accent Indicator (Amber) -->
+    <circle cx="32" cy="34" r="5" fill="#f59e0b"/>
+    <text x="46" y="38" class="sf-mono" font-size="11" font-weight="600" fill="#f59e0b" letter-spacing="0.5">DEPENDENCY GRAPH</text>
+    
+    <text x="30" y="78" class="sf-display" font-size="32" font-weight="700" fill="#ffffff" letter-spacing="-0.5">0</text>
+    <text x="62" y="76" class="sf-display" font-size="15" font-weight="500" fill="#94a3b8">Pip Packages</text>
+    
+    <text x="30" y="104" class="sf-display" font-size="12" fill="#64748b">100% Python 3 standard library</text>
+  </g>
+</svg>
