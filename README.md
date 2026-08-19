@@ -44,7 +44,7 @@ Launchpad generates lightweight `.webloc` shortcut files inside a disposable `La
 * `⌘Space` $\rightarrow$ `project github` $\rightarrow$ `Return` opens the remote GitHub repository.
 
 <div align="center">
-  <img src="assets/spotlight-window.png" alt="Native macOS Spotlight Search" width="75%" style="border-radius: 10px;" />
+  <img src="assets/spotlight-instant-recall.jpg" alt="Native macOS Spotlight Instant Recall" width="85%" style="border-radius: 12px;" />
 </div>
 
 ### 2. Readiness at a Glance (Finder Tags)
