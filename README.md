@@ -12,8 +12,11 @@ Turn Finder and Spotlight into your project launcher, status board, and storage 
 </div>
 
 ```bash
-# 1-Line Install for macOS (adds `launchpad` to your PATH):
+# 1-Line Quick Install for macOS (Interactive with Finder Drag & Drop support)
 curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
+
+# Or pass your project directory directly:
+curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash -s -- ~/Developer
 ```
 
 <br/>
