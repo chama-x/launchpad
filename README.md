@@ -5,22 +5,18 @@
 **The native workspace manager for macOS.**  
 Turn Finder and Spotlight into your project launcher, status board, and storage lifecycle engine.
 
-<p align="center">
-  <img src="assets/specs-zero-footprint.svg" alt="Zero resident daemons · 0 MB idle RAM · Pure Python 3 standard library" width="85%" />
-</p>
-
-</div>
+<br/>
 
 ```bash
-# 1-Line Install for macOS (prompts for your projects folder or accepts drag & drop):
+# 1-Line Install for macOS (adds `launchpad` to your PATH):
 curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
 ```
 
 <br/>
 
-<div align="center">
-  <img src="assets/finder-before-after.jpg" alt="Standard macOS Finder vs Launchpad tiering comparison" width="100%" style="border-radius: 12px;" />
-  <p><em>Figure 1: Standard macOS Finder vs. Launchpad in-place tiering across 33 local repositories.</em></p>
+<img src="assets/finder-before-after.jpg" alt="Standard macOS Finder vs Launchpad tiering comparison" width="100%" style="border-radius: 12px;" />
+<p><em>Figure 1: Standard macOS Finder vs. Launchpad in-place tiering across 33 local repositories.</em></p>
+
 </div>
 
 ---
