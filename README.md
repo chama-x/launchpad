@@ -12,13 +12,7 @@ Turn Finder and Spotlight into your project launcher, status board, and storage 
 </div>
 
 ```bash
-# 1. Audit the single-file source (pure standard library Python):
-less engine/launchpad.py
-
-# 2. Try it in your terminal without installing:
-python3 engine/launchpad.py status
-
-# 3. Or install the CLI symlink to ~/.local/bin:
+# 1-Line Install for macOS (adds `launchpad` to your PATH):
 curl -fsSL https://raw.githubusercontent.com/chama-x/launchpad/main/install.sh | bash
 ```
 
